@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:16:53 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:43:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 00:08:37 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 00:10:19 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Zombie::Zombie(std::string name) : _name(name)
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
 }
 
-Zombie::~Zombie(void)
+HumanA::~HumanA(void)
 {
-	std::cout << this->_name << ": Oh no I'm dying" << std::endl;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -30,10 +29,9 @@ Zombie::~Zombie(void)
 /* -------------------------------------------------------------------------- */
 
 /**
- * This function prints the name of the zombie and the string 'BraiiiiiiinnnzzzZ...' to the standard
- * output.
+ * It prints out the name of the HumanA and the type of weapon it has
  */
-void	Zombie::announce(void)
+void	HumanA::attack(void)
 {
-	std::cout << this->_name  << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
 }

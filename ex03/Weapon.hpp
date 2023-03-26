@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:15:07 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/26 00:05:02 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/25 23:59:08 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 00:12:49 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 # include <iostream>
 
@@ -19,15 +19,17 @@
 /*                                   Classes                                  */
 /* -------------------------------------------------------------------------- */
 
-class Zombie {
+class Weapon
+{
 	private:
-		std::string	_name;
+		std::string	_type;
 
 	public:
-		Zombie(std::string name);
-		~Zombie(void);
+		Weapon(std::string type);
+		~Weapon(void);
 
-		void		announce(void);
+		std::string const	&getType(void);
+		void				setType(std::string type);
 };
 
 #endif

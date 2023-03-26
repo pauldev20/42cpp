@@ -1,2 +1,17 @@
 .DS_Store
 .vscode
+ex00/objs
+ex00/zombie
+ex01/objs
+ex01/zombieHorde
+ex02/objs
+ex02/brain
+ex03/objs
+ex03/fight
+ex04/objs
+ex04/replacer
+ex04/*.replace
+ex05/objs
+ex05/harl
+ex06/objs
+ex06/harlFilter

@@ -5,25 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:25:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:35:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 01:03:04 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 01:13:45 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
-int	main(void)
+int	main(int argc, char **argv)
 {
-	Zombie zombie1("Fred");
-	zombie1.announce();
-
-	Zombie	*zombie = newZombie("Eddie");
-	zombie->announce();
-	delete zombie;
-
-	randomChump("Random Zombie");
+	if (argc != 2) {
+		std::cout << "Usage: ./harl <level>" << std::endl;
+		return (1);
+	}
+	Harl harl;
+	harl.complain(argv[1]);
 	return (0);
 }

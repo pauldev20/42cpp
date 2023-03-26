@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 23:24:37 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:24:52 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/03/25 23:47:50 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 Zombie*	newZombie(std::string name)
 {
 	Zombie	*zombie = new Zombie(name);
+
 	return (zombie);
 }

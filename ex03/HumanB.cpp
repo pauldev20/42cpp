@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:16:53 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:43:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 00:10:22 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 00:19:01 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Zombie::Zombie(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name)
+{
+	this->_weapon = NULL;
+}
+
+HumanB::~HumanB(void)
 {
 }
 
-Zombie::~Zombie(void)
+/* -------------------------------------------------------------------------- */
+/*                                   Setters                                  */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * It takes a reference to a Weapon object as a parameter, and sets the _weapon attribute to point to
+ * that object
+ * 
+ * @param weapon a reference to a Weapon object
+ */
+void	HumanB::setWeapon(Weapon &weapon)
 {
-	std::cout << this->_name << ": Oh no I'm dying" << std::endl;
+	this->_weapon = &weapon;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -30,10 +45,12 @@ Zombie::~Zombie(void)
 /* -------------------------------------------------------------------------- */
 
 /**
- * This function prints the name of the zombie and the string 'BraiiiiiiinnnzzzZ...' to the standard
- * output.
+ * It prints the name of the HumanB and the type of weapon it has
  */
-void	Zombie::announce(void)
+void	HumanB::attack(void)
 {
-	std::cout << this->_name  << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	if (this->_weapon == NULL)
+		std::cout << this->_name << " has no weapon" << std::endl;
+	else
+		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }

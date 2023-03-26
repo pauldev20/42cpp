@@ -5,25 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:25:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:35:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 01:03:04 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 01:04:07 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
+#include "Harl.hpp"
 
 int	main(void)
 {
-	Zombie zombie1("Fred");
-	zombie1.announce();
+	Harl harl;
 
-	Zombie	*zombie = newZombie("Eddie");
-	zombie->announce();
-	delete zombie;
-
-	randomChump("Random Zombie");
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
 	return (0);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:25:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:35:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 00:27:14 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 00:36:12 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef REPLACER_HPP
+# define REPLACER_HPP
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
+# include <fstream>
+# include <iostream>
 
-int	main(void)
-{
-	Zombie zombie1("Fred");
-	zombie1.announce();
+class Replacer {
+	private:
+		std::string	_filename;
 
-	Zombie	*zombie = newZombie("Eddie");
-	zombie->announce();
-	delete zombie;
+	public:
+		Replacer(std::string filename);
+		~Replacer(void);
 
-	randomChump("Random Zombie");
-	return (0);
-}
+		int	replace(std::string s1, std::string s2);
+};
+
+#endif

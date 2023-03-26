@@ -1,39 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:16:53 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:43:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 00:00:34 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 00:01:16 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Zombie::Zombie(std::string name) : _name(name)
+Weapon::Weapon(std::string type) : _type(type)
 {
 }
 
-Zombie::~Zombie(void)
+Weapon::~Weapon(void)
 {
-	std::cout << this->_name << ": Oh no I'm dying" << std::endl;
 }
 
 /* -------------------------------------------------------------------------- */
-/*                               Public Methods                               */
+/*                             Getters and Setters                            */
 /* -------------------------------------------------------------------------- */
 
 /**
- * This function prints the name of the zombie and the string 'BraiiiiiiinnnzzzZ...' to the standard
- * output.
+ * It returns a reference to the type of the weapon.
+ * 
+ * @return A reference to the string type.
  */
-void	Zombie::announce(void)
+std::string const	&Weapon::getType(void)
 {
-	std::cout << this->_name  << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	return (this->_type);
+}
+
+/**
+ * It sets the type of the weapon
+ * 
+ * @param type The type of weapon.
+ */
+void				Weapon::setType(std::string type)
+{
+	this->_type = type;
 }

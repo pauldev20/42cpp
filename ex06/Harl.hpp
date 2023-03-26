@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 23:25:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:35:07 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/03/26 00:47:48 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/03/26 01:07:30 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
+# include <iostream>
 
-int	main(void)
-{
-	Zombie zombie1("Fred");
-	zombie1.announce();
+class Harl {
+	private:
+		typedef void	(Harl::*complain_t)(void);
 
-	Zombie	*zombie = newZombie("Eddie");
-	zombie->announce();
-	delete zombie;
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
 
-	randomChump("Random Zombie");
-	return (0);
-}
+	public:
+		Harl(void);
+		~Harl(void);
+
+		void	complain(std::string level);
+};
+
+#endif
