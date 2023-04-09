@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/10 00:05:35 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/10 00:13:11 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void				ScalarConverter::convert(std::string const input)
 		std::cout << "float: " << static_cast<float>(input[0]) << ".0f" << std::endl;
 		std::cout << "double: " << static_cast<double>(input[0]) << ".0" << std::endl;
 		return;
-	} else if (str.find_first_not_of("0123456789") == std::string::npos) {
+	} else if (input.find_first_not_of("0123456789") == std::string::npos) {
 		intVal = std::stoi(input);
 		if (std::isprint(intVal))
 			charVal = std::string("'") + static_cast<char>(intVal) + std::string("'");
@@ -71,23 +71,25 @@ void				ScalarConverter::convert(std::string const input)
 		return;
 	} else if (input[input.size() - 1] == 'f') {
 		floatVal = std::stof(input);
-		if (std::isprint(charVal))
-			charVal = std::string("'") + static_cast<char>(charVal) + std::string("'");
+		intVal = std::stoi(input);
+		if (std::isprint(intVal))
+			charVal = std::string("'") + static_cast<char>(intVal) + std::string("'");
 		else
 			charVal = "Non displayable";
 		std::cout << "char: " << charVal << std::endl;
-		std::cout << "int: " << static_cast<int>(floatVal) << std::endl;
+		std::cout << "int: " << intVal << std::endl;
 		std::cout << "float: " << floatVal << "f" << std::endl;
 		std::cout << "double: " << static_cast<double>(floatVal) << std::endl;
 		return;
-	} else if (str.find_first_not_of("0123456789") == std::string::npos && input.find('.') != std::string::npos) {
+	} else if (input.find_first_not_of("0123456789.") == std::string::npos && input.find('.') != std::string::npos) {
 		doubleVal = std::stod(input);
-		if (std::isprint(charVal))
-			charVal = std::string("'") + static_cast<char>(charVal) + std::string("'");
+		intVal = std::stoi(input);
+		if (std::isprint(intVal))
+			charVal = std::string("'") + static_cast<char>(intVal) + std::string("'");
 		else
 			charVal = "Non displayable";
 		std::cout << "char: " << charVal << std::endl;
-		std::cout << "int: " << static_cast<int>(doubleVal) << std::endl;
+		std::cout << "int: " << intVal << std::endl;
 		std::cout << "float: " << static_cast<float>(doubleVal) << "f" << std::endl;
 		std::cout << "double: " << doubleVal << std::endl;
 		return;
