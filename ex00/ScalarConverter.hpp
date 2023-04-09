@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:24:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 20:35:37 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/09 23:31:17 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ class ScalarConverter
 {
 	private:
 		ScalarConverter();
+		ScalarConverter(ScalarConverter const &src);
+		ScalarConverter		&operator=(ScalarConverter const &rhs);
 
 	public:
-		ScalarConverter(ScalarConverter const &src);
 		~ScalarConverter();
-		ScalarConverter		&operator=(ScalarConverter const &rhs);
 
 		static void			convert(std::string const input);
 

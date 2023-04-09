@@ -6,11 +6,15 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 21:55:37 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/10 00:05:35 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+/* -------------------------------------------------------------------------- */
+/*                                Class Methods                               */
+/* -------------------------------------------------------------------------- */
 
 ScalarConverter::ScalarConverter()
 {
@@ -31,53 +35,72 @@ ScalarConverter		&ScalarConverter::operator=(ScalarConverter const &rhs)
 	return (*this);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Public Methods                               */
+/* -------------------------------------------------------------------------- */
+
 void				ScalarConverter::convert(std::string const input)
 {
-	// std::cout << "test: " << std::stoi(input) << std::endl;
-	std::cout << "char: ";
-	try
-	{
-		char c = static_cast<char>(std::stoi(input));
-		if (std::isprint(c))
-			std::cout << "'" << c << "'" << std::endl;
+	std::string	pseudoLiterals[] = {
+		"+inff", "-inff",
+		"-inf", "+inf",
+		"nanf", "nan"
+	};
+	std::string charVal = "";
+	int			intVal = 0;
+	float		floatVal = 0.0f;
+	double		doubleVal = 0.0;
+
+	if (input.size() == 1 && !std::isdigit(input[0]) && std::isprint(input[0])) {
+		charVal = std::string("'") + input[0] + std::string("'");
+		std::cout << "char: " << charVal << std::endl;
+		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(input[0]) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(input[0]) << ".0" << std::endl;
+		return;
+	} else if (str.find_first_not_of("0123456789") == std::string::npos) {
+		intVal = std::stoi(input);
+		if (std::isprint(intVal))
+			charVal = std::string("'") + static_cast<char>(intVal) + std::string("'");
 		else
-			std::cout << "Non displayable" << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "impossible" << std::endl;
-	}
-
-	std::cout << "int: ";
-	try
-	{
-		int i = std::stoi(input);
-		std::cout << i << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "impossible" << std::endl;
-	}
-
-	std::cout << "float: ";
-	try
-	{
-		float f = std::stof(input);
-		std::cout << f << "f" << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "impossible" << std::endl;
-	}
-
-	std::cout << "double: ";
-	try
-	{
-		double d = std::stod(input);
-		std::cout << d << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "impossible" << std::endl;
+			charVal = "Non displayable";
+		std::cout << "char: " << charVal << std::endl;
+		std::cout << "int: " << intVal << std::endl;
+		std::cout << "float: " << static_cast<float>(intVal) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(intVal) << ".0" << std::endl;
+		return;
+	} else if (input[input.size() - 1] == 'f') {
+		floatVal = std::stof(input);
+		if (std::isprint(charVal))
+			charVal = std::string("'") + static_cast<char>(charVal) + std::string("'");
+		else
+			charVal = "Non displayable";
+		std::cout << "char: " << charVal << std::endl;
+		std::cout << "int: " << static_cast<int>(floatVal) << std::endl;
+		std::cout << "float: " << floatVal << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(floatVal) << std::endl;
+		return;
+	} else if (str.find_first_not_of("0123456789") == std::string::npos && input.find('.') != std::string::npos) {
+		doubleVal = std::stod(input);
+		if (std::isprint(charVal))
+			charVal = std::string("'") + static_cast<char>(charVal) + std::string("'");
+		else
+			charVal = "Non displayable";
+		std::cout << "char: " << charVal << std::endl;
+		std::cout << "int: " << static_cast<int>(doubleVal) << std::endl;
+		std::cout << "float: " << static_cast<float>(doubleVal) << "f" << std::endl;
+		std::cout << "double: " << doubleVal << std::endl;
+		return;
+	} else {
+		for (int i = 0; i < 6; i++) {
+			if (input == pseudoLiterals[i]) {
+				std::cout << "char: " << pseudoLiterals[i] << std::endl;
+				std::cout << "int: " << pseudoLiterals[i] << std::endl;
+				std::cout << "float: " << pseudoLiterals[i] << std::endl;
+				std::cout << "double: " << pseudoLiterals[i] << std::endl;
+				return;
+			}
+		}
+		std::cout << "Invalid input" << std::endl;
 	}
 }
