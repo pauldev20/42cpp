@@ -6,13 +6,14 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:41:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 14:18:26 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 16:39:12 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <chrono>
+#include <ctime>
 #include <iomanip>
 #include <iostream>
+
 #include "Account.hpp"
 
 /* -------------------------------------------------------------------------- */
@@ -99,8 +100,14 @@ int		Account::getNbWithdrawals(void) {
  * It displays the current date and time in the format [YYYYMMDD_HHMMSS]
  */
 void	Account::_displayTimestamp(void) {
-	time_t time = std::time(NULL);
-	std::cout << std::put_time(std::localtime(&time), "[%Y%m%d_%H%M%S] ");
+	time_t	time = std::time(NULL);
+	tm		*ltm = localtime(&time);
+	std::cout 	<< "[" << 1900 + ltm->tm_year
+				<< std::setw(2) << std::setfill('0') << 1 + ltm->tm_mon
+				<< std::setw(2) << std::setfill('0') << ltm->tm_mday
+				<< "_" << std::setw(2) << std::setfill('0') << ltm->tm_hour
+				<< std::setw(2) << std::setfill('0') << ltm->tm_min
+				<< std::setw(2) << std::setfill('0') << ltm->tm_sec << "] ";
 }
 
 /* -------------------------------------------------------------------------- */
