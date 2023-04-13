@@ -6,11 +6,12 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 23:07:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/28 03:25:31 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 00:55:23 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cmath>
+
 #include "Fixed.hpp"
 
 /* -------------------------------------------------------------------------- */
@@ -74,7 +75,7 @@ Fixed::Fixed(Fixed const &src)
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_value = rhs.getRawBits();
+	this->_value = rhs._value;
 	return *this;
 }
 

@@ -6,13 +6,13 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 03:18:16 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/28 03:29:49 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 00:14:14 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-bool bsp( Point const a, Point const b, Point const c, Point const point);
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 int	main(void)
 {
@@ -34,6 +34,22 @@ int	main(void)
 	Point const p2(Fixed(3), Fixed(8));
 	std::cout << "P: x:" << p2.getX() << " y:" << p2.getY() << std::endl;
 	if (bsp(a, b, c, p2))
+		std::cout << "P is inside the triangle" << std::endl;
+	else
+		std::cout << "P is outside the triangle" << std::endl;
+	std::cout << std::endl;
+
+	if (bsp(Point(0, 0), Point(20, 30), Point(40, 0), Point(20, 15)))
+		std::cout << "P is inside the triangle" << std::endl;
+	else
+		std::cout << "P is outside the triangle" << std::endl;
+
+	if (bsp(Point(10, 0), Point(30, 30), Point(50, 0), Point(30, 15)))
+		std::cout << "P is inside the triangle" << std::endl;
+	else
+		std::cout << "P is outside the triangle" << std::endl;
+	
+	if (bsp(Point(10, 0), Point(30, 30), Point(50, 0), Point(50, 15)))
 		std::cout << "P is inside the triangle" << std::endl;
 	else
 		std::cout << "P is outside the triangle" << std::endl;
