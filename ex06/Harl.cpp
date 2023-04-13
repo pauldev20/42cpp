@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 00:50:49 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/26 01:21:45 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:59:38 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,13 @@ void	Harl::complain(std::string level)
 	{
 		case 0:
 			this->debug();
+			__attribute__((fallthrough));
 		case 1:
 			this->info();
+			__attribute__((fallthrough));
 		case 2:
 			this->warning();
+			__attribute__((fallthrough));
 		case 3:
 			this->error();
 			break;

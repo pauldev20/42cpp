@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 00:27:11 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/26 00:41:32 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:57:10 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ Replacer::~Replacer(void)
  */
 int	Replacer::replace(std::string s1, std::string s2)
 {
-	std::ifstream	inFile(this->_filename);
+	std::ifstream	inFile(this->_filename.c_str());
 
 	if (inFile.is_open()) {
 		std::string	fileContent;
 		std::getline(inFile, fileContent, '\0');
 
 		if (!fileContent.empty()) {
-			std::ofstream	outFile(this->_filename + ".replace");
+			std::ofstream	outFile((this->_filename + ".replace").c_str());
 
 			size_t	pos = fileContent.find(s1);
 			while (pos != std::string::npos) {
