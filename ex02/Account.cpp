@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:41:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:05:56 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:18:26 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	Account::makeDeposit(int deposit) {
 				<< ";deposit:" << deposit 
 				<< ";amount:" << this->_amount + deposit 
 				<< ";nb_deposits:" << ++this->_nbDeposits << std::endl;
+	Account::_amount += deposit;
 }
 
 /**
@@ -156,6 +157,7 @@ bool	Account::makeWithdrawal(int withdrawal) {
 	Account::_totalAmount -= withdrawal;
 	std::cout	<< withdrawal << ";amount:" << this->_amount - withdrawal
 				<< ";nb_withdrawals:" << ++this->_nbWithdrawals << std::endl;
+	Account::_amount -= withdrawal;
 	return (true);
 }
 
