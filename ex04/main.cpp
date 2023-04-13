@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 00:20:50 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 19:21:51 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 22:14:06 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	Replacer replacer(argv[1]);
-	if (replacer.replace(argv[2], argv[3])) {
+	if (replacer.replace(argv[2], argv[3]))
 		return (1);
-	}
 
 	return (0);
 }
