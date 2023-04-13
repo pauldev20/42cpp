@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:05:37 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 18:11:58 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:32:28 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ PhoneBook::~PhoneBook(void)
  * 
  * @return A string.
  */
-std::string	PhoneBook::_readInput(std::string str)
+std::string	PhoneBook::_readInput(std::string str, char const *allowed)
 {
 	std::string	line;
 	bool		valid = false;
@@ -54,7 +54,7 @@ std::string	PhoneBook::_readInput(std::string str)
 				line.find_first_of(" ") != std::string::npos &&
 				line.find_first_of("ABCDEFHGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890") != std::string::npos
 			)
-		))
+		) && (allowed == NULL || line.find_first_not_of(allowed) == std::string::npos))
 			valid = true;
 		else
 			std::cout << "Invalid input!" << std::endl;
@@ -83,7 +83,7 @@ int			PhoneBook::_readIndex(std::string str)
 		std::istringstream(line) >> index;
 		if (!std::cin || std::cin.eof())
 			return(-1);
-		if (!line.empty() && line.find_first_of("0123456789") != std::string::npos)
+		if (!line.empty() && line.find_first_not_of("0123456789") == std::string::npos)
 			valid = true;
 		else
 			std::cout << "Invalid input!" << std::endl;
@@ -120,11 +120,11 @@ void		PhoneBook::addContact(void)
 	Contact	*contact;
 
 	contact = &this->_contacts[this->_contactCount % 8];
-	contact->setValue(std::cin ? _readInput("First name") : "", FIRST_NAME);
-	contact->setValue(std::cin ? _readInput("Last name") : "", LAST_NAME);
-	contact->setValue(std::cin ? _readInput("Nickname") : "", NICKNAME);
-	contact->setValue(std::cin ? _readInput("Phone number") : "", PHONE_NUMBER);
-	contact->setValue(std::cin ? _readInput("Darkest secret") : "", DARKEST_SECRET);
+	contact->setValue(std::cin ? _readInput("First name", NULL) : "", FIRST_NAME);
+	contact->setValue(std::cin ? _readInput("Last name", NULL) : "", LAST_NAME);
+	contact->setValue(std::cin ? _readInput("Nickname", NULL) : "", NICKNAME);
+	contact->setValue(std::cin ? _readInput("Phone number", " +1234567890") : "", PHONE_NUMBER);
+	contact->setValue(std::cin ? _readInput("Darkest secret", NULL) : "", DARKEST_SECRET);
 	this->_contactCount++;
 }
 

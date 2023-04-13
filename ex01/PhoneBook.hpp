@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 17:45:01 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 15:35:56 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:32:33 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PhoneBook
 		int			_contactCount;
 
 		int			_readIndex(std::string str);
-		std::string	_readInput(std::string str);
+		std::string	_readInput(std::string str, char const *allowed);
 		std::string	_truncateString(std::string str);
 
 	public:
