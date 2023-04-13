@@ -1,4 +1,5 @@
 .vscode
+.DS_Store
 README.md
 ex00/objs
 ex00/fixed
