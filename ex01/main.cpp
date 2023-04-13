@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 17:39:11 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/23 17:44:05 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 15:58:10 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	std::string	line;
 	PhoneBook 	phonebook;
 
-	while (line != "EXIT")
+	while (line != "EXIT" && std::cin)
 	{
 		std::cout << "> ";
 		std::getline(std::cin, line);

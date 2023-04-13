@@ -6,11 +6,14 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:05:37 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 22:58:36 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 16:28:54 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+#include <sstream>
+#include <iomanip>
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
@@ -45,7 +48,9 @@ std::string	PhoneBook::_readInput(std::string str)
 	{
 		std::cout << str << ": ";
 		std::getline(std::cin, line);
-		if (!line.empty())
+		if (!std::cin || std::cin.eof())
+			return("");
+		if (!line.empty() && line.find_first_of(" \t\r") == std::string::npos)
 			valid = true;
 		else
 			std::cout << "Invalid input!" << std::endl;
@@ -63,18 +68,21 @@ std::string	PhoneBook::_readInput(std::string str)
  */
 int			PhoneBook::_readIndex(std::string str)
 {
-	int		index;
-	bool	valid = false;
+	std::string	line;
+	int			index;
+	bool		valid = false;
 
 	while (!valid)
 	{
 		std::cout << str << ": ";
-		std::cin >> index;
-		if (std::cin.good() && (index >= 0 && index <= 8))
+		std::getline(std::cin, line);
+		std::istringstream(line) >> index;
+		if (!std::cin || std::cin.eof())
+			return(-1);
+		if (!line.empty() && line.find_first_of("0123456789") != std::string::npos)
 			valid = true;
 		else
 			std::cout << "Invalid input!" << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	}
 	
 	return (index);
@@ -108,11 +116,11 @@ void		PhoneBook::addContact(void)
 	Contact	*contact;
 
 	contact = &this->_contacts[this->_contactCount % 8];
-	contact->setValue(_readInput("First name"), FIRST_NAME);
-	contact->setValue(_readInput("Last name"), LAST_NAME);
-	contact->setValue(_readInput("Nickname"), NICKNAME);
-	contact->setValue(_readInput("Phone number"), PHONE_NUMBER);
-	contact->setValue(_readInput("Darkest secret"), DARKEST_SECRET);
+	contact->setValue(std::cin ? _readInput("First name") : "", FIRST_NAME);
+	contact->setValue(std::cin ? _readInput("Last name") : "", LAST_NAME);
+	contact->setValue(std::cin ? _readInput("Nickname") : "", NICKNAME);
+	contact->setValue(std::cin ? _readInput("Phone number") : "", PHONE_NUMBER);
+	contact->setValue(std::cin ? _readInput("Darkest secret") : "", DARKEST_SECRET);
 	this->_contactCount++;
 }
 
@@ -123,6 +131,7 @@ void		PhoneBook::addContact(void)
 void		PhoneBook::searchContact(void)
 {
 	Contact		*contact;
+	int 		index = -1;
 
 	if (this->_contactCount == 0)
 	{
@@ -140,5 +149,15 @@ void		PhoneBook::searchContact(void)
 		std::cout << std::setw(10) << this->_truncateString(contact->getValue(LAST_NAME)) << "|";
 		std::cout << std::setw(10) << this->_truncateString(contact->getValue(NICKNAME)) << std::endl;
 	}
-	this->_contacts[_readIndex("Enter the index of the contact you want to see")].print();
+	while (index == -1)
+	{
+		index = _readIndex("Enter the index of the contact you want to see");
+		if (index == -1)
+			return;
+		if (index >= 0 && index < 8 && !this->_contacts[index].getValue(FIRST_NAME).empty())
+			break;
+		std::cout << "Index not found! Please try again." << std::endl;
+		index = -1;
+	}
+	this->_contacts[index].print();
 }
