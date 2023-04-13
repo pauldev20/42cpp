@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:05:37 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 16:28:54 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:11:58 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ std::string	PhoneBook::_readInput(std::string str)
 		std::getline(std::cin, line);
 		if (!std::cin || std::cin.eof())
 			return("");
-		if (!line.empty() && line.find_first_of(" \t\r") == std::string::npos)
+		if (!line.empty() && (line.find_first_of(" \t\r") == std::string::npos || (
+				line.find_first_of(" ") != std::string::npos &&
+				line.find_first_of("ABCDEFHGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890") != std::string::npos
+			)
+		))
 			valid = true;
 		else
 			std::cout << "Invalid input!" << std::endl;
 	}
-	
+
 	return (line);
 }
 
