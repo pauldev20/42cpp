@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 00:27:11 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/13 18:57:10 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 21:58:55 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int	Replacer::replace(std::string s1, std::string s2)
 {
 	std::ifstream	inFile(this->_filename.c_str());
 
+	if (s1.empty() || s2.empty()) {
+		std::cout << "Error: Please provide a word and a replacement for it." << std::endl;
+		return (1);
+	}
 	if (inFile.is_open()) {
 		std::string	fileContent;
 		std::getline(inFile, fileContent, '\0');
