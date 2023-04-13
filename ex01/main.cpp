@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 23:34:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:47:38 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 19:22:10 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	main(void)
 	for (int i = 0; i < 10; i++)
 		zombies[i].announce();
 	delete[] zombies;
+
 	return (0);
 }

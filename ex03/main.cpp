@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 23:56:33 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/26 00:19:54 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 19:21:58 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int main(void)
 		club.setType("some other type of club");
 		jim.attack();
 	}
+
 	return 0;
 }

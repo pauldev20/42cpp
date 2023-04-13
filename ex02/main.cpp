@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 23:49:46 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/25 23:54:06 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/13 19:22:06 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(void)
 	std::cout << "string value: \t\t" << str << std::endl;
 	std::cout << "stringPTR value: \t" << *stringPTR << std::endl;
 	std::cout << "stringREF value: \t" << stringREF << std::endl;
+
 	return (0);
 }
