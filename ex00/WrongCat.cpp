@@ -6,11 +6,15 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:30:41 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 18:31:24 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:46:48 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
+
+/* -------------------------------------------------------------------------- */
+/*                                Class Methods                               */
+/* -------------------------------------------------------------------------- */
 
 WrongCat::WrongCat(void) : WrongAnimal()
 {
@@ -23,6 +27,13 @@ WrongCat::~WrongCat(void)
 	std::cout << "WrongCat destructor called" << std::endl;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Public Methods                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The function makes a cat sound.
+ */
 void WrongCat::makeSound(void) const
 {
 	std::cout << "Meow Meow" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 18:33:00 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 16:09:14 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int main(void)
 	std::cout << wrong_i->getType() << " " << std::endl;
 	wrong_i->makeSound();
 	wrong_meta->makeSound();
+
+	delete meta;
+	delete i;
+	delete j;
+	delete wrong_meta;
+	delete wrong_i;
 
 	return (0); 
 }
