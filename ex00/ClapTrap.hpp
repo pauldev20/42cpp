@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 00:21:22 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/29 00:46:46 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 13:46:26 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 
 # include <iostream>
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class ClapTrap
 {
 	private:
 		std::string		_name;
-		unsigned int	_hit_points;
+		int				_hit_points;
 		unsigned int	_energy_points;
 		unsigned int	_attack_damage;
 

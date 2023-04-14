@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 00:31:02 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/03/29 00:50:04 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 14:10:33 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 
 int	main(void)
 {
-	ClapTrap	claptrap("Bill");
-	ClapTrap	claptrap2(claptrap);
-
-	claptrap.attack("target");
-	claptrap.takeDamage(10);
-	claptrap.beRepaired(5);
-
 	ScavTrap	scavtrap("John");
 	ScavTrap	scavtrap2(scavtrap);
 
@@ -29,5 +22,8 @@ int	main(void)
 	scavtrap.takeDamage(10);
 	scavtrap.beRepaired(5);
 	scavtrap.guardGate();
+	scavtrap.takeDamage(100);
+	scavtrap.guardGate();
+
 	return (0);
 }

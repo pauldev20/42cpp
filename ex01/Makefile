@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/03/29 00:50:34 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/14 13:10:37 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:= scavtrap
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp ClapTrap.cpp ScavTrap.cpp
 
