@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:37:39 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/14 15:06:44 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/14 15:17:45 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ DiamondTrap::~DiamondTrap()
  */
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap " << this->_name << " is " << this->ClapTrap::_name << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " is ClapTrap " << this->ClapTrap::_name << std::endl;
 }
