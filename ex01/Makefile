@@ -16,7 +16,7 @@
 
 NAME		:= animals
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -Wshadow -std=c++98
+CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
