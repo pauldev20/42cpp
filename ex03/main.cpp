@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:21:49 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 22:30:35 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 23:12:56 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@
 
 int main() {
 	{
-		AMateria* tmp;
+		ICharacter* me = new Character("me");
 		AMateria* i = new Ice();
+
 		std::cout << i->getType() << std::endl;
-		AMateria* c = new Ice();
-		tmp = i;
-		i = c;
+		AMateria* c = new Cure();
+		*i = *c;
 		std::cout << i->getType() << std::endl;
+		i->use(*me);
+
 		delete i;
-		delete tmp;
+		delete c;
+		delete me;
 	}
 
 	std::cout << std::endl;
