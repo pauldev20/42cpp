@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 22:20:53 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 22:54:47 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,27 @@
 
 int main(void)
 {
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	delete j;
-	delete i;
+	{
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+		
+		delete j;
+		delete i;
+	}
 
 	std::cout << std::endl;
 	
-	int	testcases = 10;
-	Animal* animals[testcases];
-	for (int v = 0; v < (testcases / 2); v++)
 	{
-		animals[v] = new Dog();
-		animals[(testcases / 2) + v] = new Cat();
+		int	testcases = 10;
+		Animal* animals[testcases];
+		for (int v = 0; v < (testcases / 2); v++)
+		{
+			animals[v] = new Dog();
+			animals[(testcases / 2) + v] = new Cat();
+		}
+		for (int v = 0; v < testcases; v++)
+			delete animals[v];
 	}
-	for (int v = 0; v < testcases; v++)
-		delete animals[v];
 
 	std::cout << std::endl;
 
@@ -61,6 +65,28 @@ int main(void)
 		tmp.makeSound();
 		tmp2.makeSound();
     }
+
+	std::cout << std::endl;
+
+	{
+		Dog *test = new Dog();
+		Dog tmp;
+		tmp = *test;
+		delete test;
+
+		tmp.makeSound();
+	}
+
+	std::cout << std::endl;
+
+	{
+		Cat *test = new Cat();
+		Cat tmp;
+		tmp = *test;
+		delete test;
+
+		tmp.makeSound();
+	}
 
 	return (0); 
 }
