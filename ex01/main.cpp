@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 17:27:24 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 22:20:53 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int main(void)
 
 	std::cout << std::endl;
 	
-	Animal* animals[10];
-	for (int v = 0; v < 5; v++)
+	int	testcases = 10;
+	Animal* animals[testcases];
+	for (int v = 0; v < (testcases / 2); v++)
 	{
 		animals[v] = new Dog();
-		animals[5 + v] = new Cat();
+		animals[(testcases / 2) + v] = new Cat();
 	}
-	for (int v = 0; v < 10; v++)
+	for (int v = 0; v < testcases; v++)
 		delete animals[v];
 
 	std::cout << std::endl;

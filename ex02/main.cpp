@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 17:44:34 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 22:25:56 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int main(void)
 {
-	// AAnimal animal;
+	// AAnimal animal; // abstract class
 	
 	const AAnimal* j = new Dog();
 	const AAnimal* i = new Cat();

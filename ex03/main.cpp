@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:21:49 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 20:02:54 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 22:30:35 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main() {
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
 
-		ICharacter* bob = new Character("bob");
+		ICharacter* bob = new Character("boby");
 
 		me->use(0, *bob);
 		me->use(1, *bob);
@@ -92,7 +92,7 @@ int main() {
 		me->equip(new Ice());
 		me->equip(new Cure());
 
-		Character* bob = new Character("bob");
+		Character* bob = new Character("boby");
 		bob->equip(new Cure());
 		*bob = *me;
 
