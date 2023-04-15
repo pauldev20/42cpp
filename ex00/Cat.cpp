@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:49:32 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 16:52:59 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 16:18:54 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,22 @@ Cat::Cat() : Animal()
 	std::cout << "Cat constructor called" << std::endl;
 }
 
+Cat::Cat(Cat const &src) : Animal(src)
+{
+	std::cout << "Cat copy constructor called" << std::endl;
+	*this = src;
+}
+
 Cat::~Cat()
 {
 	std::cout << "Cat destructor called" << std::endl;
+}
+
+Cat	&Cat::operator=(Cat const &rhs)
+{
+	std::cout << "Cat assignation operator called" << std::endl;
+	this->type = rhs.type;
+	return (*this);
 }
 
 /* -------------------------------------------------------------------------- */

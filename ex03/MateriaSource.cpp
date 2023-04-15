@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:19:05 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 02:20:10 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 19:55:20 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ MateriaSource::MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
-	this->_count = 0;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &src)
@@ -31,10 +30,8 @@ MateriaSource::MateriaSource(MateriaSource const &src)
 MateriaSource::~MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
-	{
 		if (this->_materia[i] != NULL)
 			delete this->_materia[i];
-	}
 }
 
 MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
@@ -50,7 +47,6 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 			else
 				this->_materia[i] = NULL;
 		}
-		this->_count = rhs._count;
 	}
 	return (*this);
 }
@@ -61,19 +57,18 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 
 void	MateriaSource::learnMateria(AMateria *m)
 {
-	if (this->_count < 4 && m != NULL)
-	{
-		this->_materia[this->_count] = m;
-		this->_count++;
+	for (int i = 0; i < 4; i++) {
+		if (this->_materia[i] == NULL) {
+			this->_materia[i] = m;
+			return ;
+		}
 	}
 }
 
 AMateria	*MateriaSource::createMateria(std::string const &type)
 {
-	for (int i = 0; i < this->_count; i++)
-	{
+	for (int i = 0; i < 4; i++)
 		if (this->_materia[i]->getType() == type)
 			return (this->_materia[i]->clone());
-	}
 	return (NULL);
 }

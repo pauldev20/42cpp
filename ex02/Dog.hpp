@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:39:16 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 19:47:34 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:34:39 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include "AAnimal.hpp"
 # include "Brain.hpp"
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class Dog : public AAnimal
 {
 	private:
@@ -23,6 +27,7 @@ class Dog : public AAnimal
 
 	public:
 		Dog(void);
+		Dog(Dog const &src);
 		~Dog(void);
 		Dog &operator=(Dog const &rhs);
 

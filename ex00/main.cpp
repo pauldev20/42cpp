@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/14 16:09:14 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 16:17:59 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,25 @@ int main(void)
 	delete wrong_meta;
 	delete wrong_i;
 
+	std::cout << std::endl;
+
+	{
+		Dog	test;
+		Dog tmp(test);
+		
+		tmp.makeSound();
+	}
+
+	std::cout << std::endl;
+
+	{
+		WrongCat wrong_test;
+		WrongCat wrong_tmp(wrong_test);
+		
+		wrong_tmp.makeSound();	
+	}
+	
+	std::cout << std::endl;
+	
 	return (0); 
 }

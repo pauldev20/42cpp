@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:22:59 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 18:30:36 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:31:28 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ WrongAnimal::~WrongAnimal(void)
 
 WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &rhs)
 {
+	std::cout << "WrongAnimal assignation operator called" << std::endl;
 	this->type = rhs.type;
 	return (*this);
 }

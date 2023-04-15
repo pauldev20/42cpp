@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 13:28:48 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:27:24 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,27 @@ int main(void)
 
 	{
 		Dog test;
-		Dog tmp;
-		tmp = test;
-		// Dog	tmp2(test);
+		Dog	tmp(test);
+		Dog tmp2;
+		tmp2 = test;
 
+		test.makeSound();
 		tmp.makeSound();
-		// tmp2.makeSound();
+		tmp2.makeSound();
     }
 
 	std::cout << std::endl;
+
+	{
+		Cat test;
+		Cat	tmp(test);
+		Cat tmp2;
+		tmp2 = test;
+
+		test.makeSound();
+		tmp.makeSound();
+		tmp2.makeSound();
+    }
 
 	return (0); 
 }

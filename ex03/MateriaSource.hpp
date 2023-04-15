@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:18:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 02:19:02 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 19:52:34 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class MateriaSource : public IMateriaSource
 {
 	private:
 		AMateria	*_materia[4];
-		int			_count;
 
 	public:
 		MateriaSource(void);

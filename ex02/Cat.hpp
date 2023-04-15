@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:40:14 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 19:47:40 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:34:42 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include "AAnimal.hpp"
 # include "Brain.hpp"
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class Cat : public AAnimal
 {
 	private:
@@ -23,6 +27,7 @@ class Cat : public AAnimal
 
 	public:
 		Cat();
+		Cat(Cat const &src);
 		~Cat();
 		Cat	&operator=(Cat const &rhs);
 

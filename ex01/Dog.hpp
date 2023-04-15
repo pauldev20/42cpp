@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:39:16 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 11:28:57 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 16:08:09 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Dog : public Animal
 
 	public:
 		Dog(void);
+		Dog(Dog const &src);
 		~Dog(void);
 		Dog &operator=(Dog const &rhs);
 

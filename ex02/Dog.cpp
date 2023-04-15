@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:45:46 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 19:51:07 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:39:50 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,30 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Dog::Dog(void) : AAnimal()
+Dog::Dog(void)
 {
 	this->type = "Dog";
 	this->brain = new Brain();
 	std::cout << "Dog constructor called" << std::endl;
 }
 
+Dog::Dog(Dog const &src) : AAnimal(src)
+{
+	std::cout << "Dog copy constructor called" << std::endl;
+	this->brain = new Brain();
+	*this = src;
+}
+
 Dog::~Dog(void)
 {
-	delete this->brain;
 	std::cout << "Dog destructor called" << std::endl;
+	delete this->brain;
 }
 
 Dog &Dog::operator=(Dog const &rhs)
 {
-	this->type = rhs.type;
-	this->brain = new Brain(*rhs.brain);
+	std::cout << "Dog assignation operator called" << std::endl;
+	*this->brain = *rhs.brain;
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 02:21:49 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 02:23:51 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 20:02:54 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,88 @@
 #include "Cure.hpp"
 
 int main() {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	{
+		AMateria* tmp;
+		AMateria* i = new Ice();
+		std::cout << i->getType() << std::endl;
+		AMateria* c = new Ice();
+		tmp = i;
+		i = c;
+		std::cout << i->getType() << std::endl;
+		delete i;
+		delete tmp;
+	}
 
-	ICharacter* me = new Character("me");
+	std::cout << std::endl;
 
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
+	{
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
 
-	ICharacter* bob = new Character("bob");
+		ICharacter* me = new Character("me");
 
-	me->use(0, *bob);
-    me->use(1, *bob);
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
 
-	delete bob;
-	delete me;
-	delete src;
+		ICharacter* bob = new Character("bob");
+
+		me->use(0, *bob);
+		me->use(1, *bob);
+
+		delete bob;
+		delete me;
+		delete src;
+	}
+
+	std::cout << std::endl;
+
+	{
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+
+		ICharacter* me = new Character("me");
+
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+
+		me->unequip(0);
+
+		delete me;
+		delete src;
+	}
+
+	std::cout << std::endl;
+
+	{
+		Character* me = new Character("me");
+		me->equip(new Ice());
+		me->equip(new Cure());
+
+		Character* bob = new Character("bob");
+		bob->equip(new Cure());
+		*bob = *me;
+
+		bob->use(0, *me);
+
+		delete me;
+		delete bob;
+	}
 
 	return 0;
 }

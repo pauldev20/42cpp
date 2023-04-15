@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:40:14 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/14 15:45:56 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 15:58:56 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 class Cat : public Animal
 {
 	public:
-		Cat();
-		~Cat();
+		Cat(void);
+		Cat(Cat const &src);
+		~Cat(void);
+		Cat	&operator=(Cat const &rhs);
 
 		void	makeSound(void) const;
 };

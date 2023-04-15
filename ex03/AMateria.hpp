@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 01:43:37 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 02:33:13 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 18:04:26 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@
 
 class ICharacter;
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class AMateria
 {
 	protected:
-		std::string const _type;
+		std::string _type;
 
 	public:
+		AMateria(void);
 		AMateria(std::string const & type);
 		AMateria(AMateria const &src);
 		virtual ~AMateria(void);

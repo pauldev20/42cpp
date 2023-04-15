@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/07 19:48:08 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 17:44:34 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,50 @@
 
 int main(void)
 {
-	AAnimal* animals[100];
-	for (int i = 0; i < 50; i++)
-	{
-		animals[i] = new Dog();
-		animals[50 + i] = new Cat();
-	}
-
-	// const AAnimal* meta = new AAnimal();
+	// AAnimal animal;
+	
 	const AAnimal* j = new Dog();
 	const AAnimal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound! 
-	j->makeSound();
-    // meta->makeSound();
-
-	const WrongAnimal* wrong_meta = new WrongAnimal();
-	const WrongAnimal* wrong_i = new WrongCat();
-
-	std::cout << wrong_i->getType() << " " << std::endl;
-	wrong_i->makeSound();
-	wrong_meta->makeSound();
-
 	delete j;
 	delete i;
-	
-	for (int i = 0; i < 100; i++)
-		delete animals[i];
 
-	system("leaks animals");
+	std::cout << std::endl;
+	
+	AAnimal* AAnimals[10];
+	for (int v = 0; v < 5; v++)
+	{
+		AAnimals[v] = new Dog();
+		AAnimals[5 + v] = new Cat();
+	}
+	for (int v = 0; v < 10; v++)
+		delete AAnimals[v];
+
+	std::cout << std::endl;
+
+	{
+		Dog test;
+		Dog	tmp(test);
+		Dog tmp2;
+		tmp2 = test;
+
+		test.makeSound();
+		tmp.makeSound();
+		tmp2.makeSound();
+    }
+
+	std::cout << std::endl;
+
+	{
+		Cat test;
+		Cat	tmp(test);
+		Cat tmp2;
+		tmp2 = test;
+
+		test.makeSound();
+		tmp.makeSound();
+		tmp2.makeSound();
+    }
 
 	return (0); 
 }
