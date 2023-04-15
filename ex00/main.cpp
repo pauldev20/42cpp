@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 15:34:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/15 16:17:59 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/15 22:39:42 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,35 @@
 
 int main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	{
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound! 
-	j->makeSound();
-    meta->makeSound();
+		std::cout << j->getType() << " " << std::endl;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //will output the cat sound! 
+		j->makeSound();
+		meta->makeSound();
 
-	const WrongAnimal* wrong_meta = new WrongAnimal();
-	const WrongAnimal* wrong_i = new WrongCat();
+		delete meta;
+		delete i;
+		delete j;
+	}
 
-	std::cout << wrong_i->getType() << " " << std::endl;
-	wrong_i->makeSound();
-	wrong_meta->makeSound();
+	std::cout << std::endl;
 
-	delete meta;
-	delete i;
-	delete j;
-	delete wrong_meta;
-	delete wrong_i;
+	{
+		const WrongAnimal* wrong_meta = new WrongAnimal();
+		const WrongAnimal* wrong_i = new WrongCat();
+
+		std::cout << wrong_i->getType() << " " << std::endl;
+		wrong_i->makeSound();
+		wrong_meta->makeSound();
+
+		delete wrong_meta;
+		delete wrong_i;
+	}
 
 	std::cout << std::endl;
 
@@ -58,8 +65,6 @@ int main(void)
 		
 		wrong_tmp.makeSound();	
 	}
-	
-	std::cout << std::endl;
 	
 	return (0); 
 }
