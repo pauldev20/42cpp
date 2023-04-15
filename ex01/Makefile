@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/04/14 16:10:58 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/15 11:39:29 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:= animals
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
+CPPFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
