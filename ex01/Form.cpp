@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:04:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 19:15:33 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:54:48 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Form::Form() : _name("default"), _signed(false), _grade_to_sign(150), _grade_to_execute(150)
+Form::Form(void) : _name("default"), _signed(false), _grade_to_sign(150), _grade_to_execute(150)
 {
 }
 
@@ -36,7 +36,7 @@ Form::Form(Form const &src) : _name(src.getName()), _signed(src.getSigned()), _g
 {
 }
 
-Form::~Form()
+Form::~Form(void)
 {
 }
 
@@ -46,31 +46,31 @@ Form	&Form::operator=(Form const &rhs)
 	{
 		this->_signed = rhs.getSigned();
 	}
-	return *this;
+	return (*this);
 }
 
 /* -------------------------------------------------------------------------- */
 /*                             Getters And Setters                            */
 /* -------------------------------------------------------------------------- */
 
-std::string const	&Form::getName() const
+std::string const	&Form::getName(void) const
 {
-	return _name;
+	return (this->_name);
 }
 
-bool				Form::getSigned() const
+bool				Form::getSigned(void) const
 {
-	return _signed;
+	return (this->_signed);
 }
 
-int					Form::getGradeToSign() const
+int					Form::getGradeToSign(void) const
 {
-	return _grade_to_sign;
+	return (this->_grade_to_sign);
 }
 
-int					Form::getGradeToExecute() const
+int					Form::getGradeToExecute(void) const
 {
-	return _grade_to_execute;
+	return (this->_grade_to_execute);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -94,7 +94,8 @@ std::ostream &operator<<(std::ostream &os, Form const &rhs)
 	os << "Form " << rhs.getName() 
 		<< " is " << (rhs.getSigned() ? "signed" : "not signed") 
 		<< " and requires a grade of " << rhs.getGradeToSign() 
-		<< " to sign and a grade of " << rhs.getGradeToExecute() << " to execute";
+		<< " to sign and a grade of " << rhs.getGradeToExecute()
+		<< " to execute";
 	return os;
 }
 
