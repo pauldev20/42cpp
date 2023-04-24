@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:09:22 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 18:49:22 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:38:15 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,112 +17,138 @@
 
 int main(void)
 {
-	Bureaucrat		*test;
-	Form 			*form;
-
-	try
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new PresidentialPardonForm("default");
-		test->signForm(*form);
-		form->execute(*test);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			PresidentialPardonForm form("default");
+			test.signForm(form);
+			form.execute(test);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new PresidentialPardonForm("default");
-		form->execute(*test);
-		test->signForm(*form);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			PresidentialPardonForm form("default");
+			form.execute(test);
+			test.signForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new RobotomyRequestForm("default");
-		form->execute(*test);
-		test->signForm(*form);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			RobotomyRequestForm form("default");
+			test.signForm(form);
+			form.execute(test);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new RobotomyRequestForm("default");
-		test->signForm(*form);
-		form->execute(*test);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			RobotomyRequestForm form("default");
+			test.signForm(form);
+			form.execute(test);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new RobotomyRequestForm("default");
-		test->signForm(*form);
-		form->execute(*test);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			RobotomyRequestForm form("default");
+			test.signForm(form);
+			form.execute(test);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new RobotomyRequestForm("default");
-		test->signForm(*form);
-		form->execute(*test);
-		delete test;
-		delete form;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			RobotomyRequestForm form("default");
+			form.execute(test);
+			test.signForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	try
+	std::cout << std::endl;
+
 	{
-		test = new Bureaucrat("test1", 1);
-		std::cout << *test;
-		form = new ShrubberyCreationForm("default");
-		test->signForm(*form);
-		form->execute(*test);
-		delete test;
-		delete form;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			ShrubberyCreationForm form("default");
+			test.signForm(form);
+			form.execute(test);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
-	catch (std::exception &e)
+
+	std::cout << std::endl;
+
 	{
-		std::cout << e.what() << std::endl;
+		try
+		{
+			Bureaucrat test("test1", 1);
+			std::cout << test;
+			ShrubberyCreationForm form("default");
+			form.execute(test);
+			test.signForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 
 	return (0);

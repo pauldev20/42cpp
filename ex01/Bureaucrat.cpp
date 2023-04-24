@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:47:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 14:49:57 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:24:38 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,11 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 /*                             Getters And Setters                            */
 /* -------------------------------------------------------------------------- */
 
-/**
- * The function returns a constant reference to the name of a Bureaucrat object.
- * 
- * @return A constant reference to a string object representing the name of a Bureaucrat object.
- */
 std::string const	&Bureaucrat::getName(void) const
 {
 	return (this->_name);
 }
 
-/**
- * This function returns the value of the private member variable `_grade` of the `Bureaucrat` class.
- * 
- * @return the value of the private member variable `_grade` of the `Bureaucrat` class.
- */
 int					Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
@@ -73,13 +63,6 @@ int					Bureaucrat::getGrade(void) const
 /*                             Operator Overloads                             */
 /* -------------------------------------------------------------------------- */
 
-/**
- * The above function overloads the << operator to output the name and grade of a Bureaucrat object to
- * an output stream.
- * 
- * @return The overloaded insertion operator `<<` is returning a reference to the `std::ostream` object
- * `os`.
- */
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs)
 {
 	os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << "." << std::endl;
@@ -112,6 +95,13 @@ void				Bureaucrat::decrementGrade(void)
 	this->_grade++;
 }
 
+/**
+ * This function allows a bureaucrat to sign a form and prints a message indicating whether the signing
+ * was successful or not.
+ * 
+ * @param form The parameter "form" is a reference to an object of the class "Form". It is being passed
+ * as an argument to the member function "signForm" of the class "Bureaucrat".
+ */
 void				Bureaucrat::signForm(Form &form)
 {
 	try

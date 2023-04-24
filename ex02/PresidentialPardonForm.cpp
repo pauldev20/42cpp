@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:06:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 17:09:17 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:30:41 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
+PresidentialPardonForm::PresidentialPardonForm(void) : Form("PresidentialPardonForm", 25, 5), _target("default")
+{
+}
+
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : Form("PresidentialPardonForm", 25, 5), _target(target)
 {
 }
@@ -24,7 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src
 {
 }
 
-PresidentialPardonForm::~PresidentialPardonForm()
+PresidentialPardonForm::~PresidentialPardonForm(void)
 {
 }
 
@@ -50,6 +54,12 @@ std::string const		PresidentialPardonForm::getTarget() const
 /*                               Public Methods                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The function executes the Presidential Pardon Form if it is signed and the executor's grade is high
+ * enough, and prints a message indicating that the target has been pardoned by Zaphod Beeblebrox.
+ * 
+ * @param executor The bureaucrat who is attempting to execute the PresidentialPardonForm.
+ */
 void					PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (this->getSigned() == false)

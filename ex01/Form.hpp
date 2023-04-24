@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:58:50 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 14:52:28 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:02 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ class Form
 		bool				_signed;
 		int const			_grade_to_sign;
 		int const			_grade_to_execute;
+		Form(void);
 
 	public:
-		Form(void);
 		Form(std::string const &name, int grade_to_sign, int grade_to_execute);
 		Form(Form const &src);
 		~Form(void);

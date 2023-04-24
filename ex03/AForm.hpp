@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:58:50 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 19:14:39 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:27 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # include "Bureaucrat.hpp"
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class Bureaucrat;
 
 class Form
@@ -26,18 +30,18 @@ class Form
 		bool				_signed;
 		int const			_grade_to_sign;
 		int const			_grade_to_execute;
+		Form(void);
 
 	public:
-		Form();
 		Form(std::string const &name, int grade_to_sign, int grade_to_execute);
 		Form(Form const &src);
-		virtual ~Form();
+		virtual ~Form(void);
 		Form	&operator=(Form const &rhs);
 
-		std::string const	&getName() const;
-		bool				getSigned() const;
-		int					getGradeToSign() const;
-		int					getGradeToExecute() const;
+		std::string const	&getName(void) const;
+		bool				getSigned(void) const;
+		int					getGradeToSign(void) const;
+		int					getGradeToExecute(void) const;
 
 		void				beSigned(Bureaucrat const &bureaucrat);
 		virtual void		execute(Bureaucrat const &executor) const =0;

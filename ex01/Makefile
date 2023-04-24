@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/04/09 15:23:45 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/24 15:05:21 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:= form
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp Bureaucrat.cpp Form.cpp
 

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:58:57 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 16:05:21 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:44 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 
 # include "AForm.hpp"
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class RobotomyRequestForm : public Form
 {
 	private:
 		std::string		_target;
+		RobotomyRequestForm(void);
 
 	public:
-		RobotomyRequestForm();
 		RobotomyRequestForm(std::string const &target);
 		RobotomyRequestForm(RobotomyRequestForm const &src);
-		~RobotomyRequestForm();
+		~RobotomyRequestForm(void);
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &rhs);
 
-		std::string const		getTarget() const;
+		std::string const		getTarget(void) const;
 
 		void					execute(Bureaucrat const &executor) const;
 };

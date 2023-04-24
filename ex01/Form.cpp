@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:04:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 14:54:48 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:42:54 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ int					Form::getGradeToExecute(void) const
 /*                               Public Methods                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * This function allows a bureaucrat to sign a form if their grade is high enough.
+ * 
+ * @param bureaucrat The parameter `bureaucrat` is a constant reference to an object of the class
+ * `Bureaucrat`. It is used to check if the bureaucrat has a high enough grade to sign the form.
+ */
 void				Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_grade_to_sign)

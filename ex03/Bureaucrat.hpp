@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 16:01:17 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:32 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # include "AForm.hpp"
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class Form;
 
 class Bureaucrat
@@ -24,19 +28,19 @@ class Bureaucrat
 	private:
 		std::string const	_name;
 		int					_grade;
+		Bureaucrat(void);
 
 	public:
-		Bureaucrat();
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &src);
-		~Bureaucrat();
+		~Bureaucrat(void);
 		Bureaucrat &operator=(Bureaucrat const &rhs);
 
-		std::string const	&getName() const;
-		int					getGrade() const;
+		std::string const	&getName(void) const;
+		int					getGrade(void) const;
 
-		void				incrementGrade();
-		void				decrementGrade();
+		void				incrementGrade(void);
+		void				decrementGrade(void);
 		void				signForm(Form &form);
 		void				executeForm(Form const &form);
 

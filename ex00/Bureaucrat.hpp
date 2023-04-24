@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 13:29:36 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:32:19 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Bureaucrat
 	private:
 		std::string const	_name;
 		int					_grade;
+		Bureaucrat(void);
 
 	public:
-		Bureaucrat(void);
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &src);
 		~Bureaucrat(void);

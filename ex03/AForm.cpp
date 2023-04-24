@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:04:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 19:14:37 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:49:46 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,15 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Form::Form() : _name("default"), _signed(false), _grade_to_sign(150), _grade_to_execute(150)
+Form::Form(void) : _name("default"), _signed(false), _grade_to_sign(150), _grade_to_execute(150)
 {
 }
 
 Form::Form(std::string const &name, int grade_to_sign, int grade_to_execute) : _name(name), _signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute)
 {
-	if (grade_to_sign < 1)
+	if (grade_to_sign < 1 || grade_to_execute < 1)
 		throw Form::GradeTooHighException();
-	else if (grade_to_sign > 150)
-		throw Form::GradeTooLowException();
-	if (grade_to_execute < 1)
-		throw Form::GradeTooHighException();
-	else if (grade_to_execute > 150)
+	else if (grade_to_sign > 150 || grade_to_execute > 150)
 		throw Form::GradeTooLowException();
 }
 
@@ -36,7 +32,7 @@ Form::Form(Form const &src) : _name(src.getName()), _signed(src.getSigned()), _g
 {
 }
 
-Form::~Form()
+Form::~Form(void)
 {
 }
 
@@ -44,31 +40,31 @@ Form	&Form::operator=(Form const &rhs)
 {
 	if (this != &rhs)
 		this->_signed = rhs.getSigned();
-	return *this;
+	return (*this);
 }
 
 /* -------------------------------------------------------------------------- */
 /*                             Getters And Setters                            */
 /* -------------------------------------------------------------------------- */
 
-std::string const	&Form::getName() const
+std::string const	&Form::getName(void) const
 {
-	return _name;
+	return (this->_name);
 }
 
-bool				Form::getSigned() const
+bool				Form::getSigned(void) const
 {
-	return _signed;
+	return (this->_signed);
 }
 
-int					Form::getGradeToSign() const
+int					Form::getGradeToSign(void) const
 {
-	return _grade_to_sign;
+	return (this->_grade_to_sign);
 }
 
-int					Form::getGradeToExecute() const
+int					Form::getGradeToExecute(void) const
 {
-	return _grade_to_execute;
+	return (this->_grade_to_execute);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -80,7 +76,8 @@ std::ostream &operator<<(std::ostream &os, Form const &rhs)
 	os << "Form " << rhs.getName() 
 		<< " is " << (rhs.getSigned() ? "signed" : "not signed") 
 		<< " and requires a grade of " << rhs.getGradeToSign() 
-		<< " to sign and a grade of " << rhs.getGradeToExecute() << " to execute";
+		<< " to sign and a grade of " << rhs.getGradeToExecute()
+		<< " to execute";
 	return os;
 }
 
@@ -88,6 +85,12 @@ std::ostream &operator<<(std::ostream &os, Form const &rhs)
 /*                               Public Methods                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * This function allows a bureaucrat to sign a form if their grade is high enough.
+ * 
+ * @param bureaucrat The parameter `bureaucrat` is a constant reference to an object of the class
+ * `Bureaucrat`. It is used to check if the bureaucrat has a high enough grade to sign the form.
+ */
 void				Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_grade_to_sign)

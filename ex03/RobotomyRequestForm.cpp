@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 16:02:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 16:08:21 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 15:29:24 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45), _target("default")
+RobotomyRequestForm::RobotomyRequestForm(void) : Form("RobotomyRequestForm", 72, 45), _target("default")
 {
 }
 
@@ -28,7 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : Form(
 {
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
+RobotomyRequestForm::~RobotomyRequestForm(void)
 {
 }
 
@@ -46,7 +46,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 /*                             Getters And Setters                            */
 /* -------------------------------------------------------------------------- */
 
-std::string const	RobotomyRequestForm::getTarget() const
+std::string const	RobotomyRequestForm::getTarget(void) const
 {
 	return (this->_target);
 }
@@ -55,6 +55,13 @@ std::string const	RobotomyRequestForm::getTarget() const
 /*                               Public Methods                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The function executes a robotomy request form and randomly determines if the target has been
+ * successfully robotomized or not.
+ * 
+ * @param executor The parameter "executor" is a constant reference to a Bureaucrat object, which
+ * represents the bureaucrat who is attempting to execute the RobotomyRequestForm.
+ */
 void				RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	static int	fail = 0;

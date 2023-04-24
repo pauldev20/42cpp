@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 18:55:28 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 19:11:52 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:45:26 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*                                Class Methods                               */
 /* -------------------------------------------------------------------------- */
 
-Intern::Intern()
+Intern::Intern(void)
 {
 }
 
@@ -25,7 +25,7 @@ Intern::Intern(Intern const &src)
 	*this = src;
 }
 
-Intern::~Intern()
+Intern::~Intern(void)
 {
 }
 
@@ -54,6 +54,20 @@ Form	*Intern::createShrubberyCreationForm(std::string const &target) const
 	return (new ShrubberyCreationForm(target));
 }
 
+/**
+ * The function "makeForm" in the "Intern" class creates a form based on the given form name and
+ * target, using an array of form names and an array of functions to create the appropriate form.
+ * 
+ * @param formName A string representing the name of the form that needs to be created.
+ * @param target The "target" parameter is a string that represents the target of the form, which could
+ * be a person, a place, or an object depending on the type of form being created. It is used as an
+ * argument in the functions that create the specific forms.
+ * 
+ * @return The function `makeForm` returns a pointer to a `Form` object. If the `formName` parameter
+ * matches one of the three strings in the `forms` array, the corresponding function pointer in the
+ * `functions` array is called to create and return a new instance of the corresponding `Form`
+ * subclass. If `formName` does not match any of the strings in `forms`, the
+ */
 Form	*Intern::makeForm(std::string const &formName, std::string const &target) const
 {
 	std::string const forms[] = {"RobotomyRequest", "PresidentialPardon", "ShrubberyCreation"};
