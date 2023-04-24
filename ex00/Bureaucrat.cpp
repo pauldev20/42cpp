@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 14:47:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/09 14:56:35 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:38:56 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int					Bureaucrat::getGrade() const
  */
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs)
 {
-	os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << "." << std::endl;
+	os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".";
 	return (os);
 }
 
