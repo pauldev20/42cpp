@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 15:04:40 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 15:49:46 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:51:27 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,9 @@ int					Form::getGradeToExecute(void) const
 std::ostream &operator<<(std::ostream &os, Form const &rhs)
 {
 	os << "Form " << rhs.getName() 
-		<< " is " << (rhs.getSigned() ? "signed" : "not signed") 
-		<< " and requires a grade of " << rhs.getGradeToSign() 
-		<< " to sign and a grade of " << rhs.getGradeToExecute()
-		<< " to execute";
+		<< " | signed?: " << (rhs.getSigned() ? "signed" : "not signed") 
+		<< " | sign_grade: " << rhs.getGradeToSign() 
+		<< " | execute_grade: " << rhs.getGradeToExecute();
 	return os;
 }
 

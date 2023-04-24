@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 17:09:22 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 15:38:15 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/24 16:54:13 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(void)
 			std::cout << test;
 			PresidentialPardonForm form("default");
 			test.signForm(form);
+			test.executeForm(form);
 			form.execute(test);
 		}
 		catch (std::exception &e)
@@ -40,6 +41,7 @@ int main(void)
 			Bureaucrat test("test1", 1);
 			std::cout << test;
 			PresidentialPardonForm form("default");
+			test.executeForm(form);
 			form.execute(test);
 			test.signForm(form);
 		}
@@ -58,6 +60,7 @@ int main(void)
 			std::cout << test;
 			RobotomyRequestForm form("default");
 			test.signForm(form);
+			test.executeForm(form);
 			form.execute(test);
 		}
 		catch (std::exception &e)
@@ -75,6 +78,7 @@ int main(void)
 			std::cout << test;
 			RobotomyRequestForm form("default");
 			test.signForm(form);
+			test.executeForm(form);
 			form.execute(test);
 		}
 		catch (std::exception &e)
@@ -92,6 +96,7 @@ int main(void)
 			std::cout << test;
 			RobotomyRequestForm form("default");
 			test.signForm(form);
+			test.executeForm(form);
 			form.execute(test);
 		}
 		catch (std::exception &e)
@@ -108,6 +113,7 @@ int main(void)
 			Bureaucrat test("test1", 1);
 			std::cout << test;
 			RobotomyRequestForm form("default");
+			test.executeForm(form);
 			form.execute(test);
 			test.signForm(form);
 		}
@@ -126,6 +132,7 @@ int main(void)
 			std::cout << test;
 			ShrubberyCreationForm form("default");
 			test.signForm(form);
+			test.executeForm(form);
 			form.execute(test);
 		}
 		catch (std::exception &e)
@@ -142,6 +149,7 @@ int main(void)
 			Bureaucrat test("test1", 1);
 			std::cout << test;
 			ShrubberyCreationForm form("default");
+			test.executeForm(form);
 			form.execute(test);
 			test.signForm(form);
 		}
