@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:24:20 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/24 21:57:06 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/25 13:52:54 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <iostream>
 
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
+
 class ScalarConverter
 {
 	private:
@@ -22,10 +26,13 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &src);
 		ScalarConverter		&operator=(ScalarConverter const &rhs);
 
+		static bool			handlePseudo(std::string const &input);
+		static void			printOutput(std::string input, std::string const &charVal, int const &intVal, float const &floatVal, double const &doubleVal);
+
 	public:
 		~ScalarConverter(void);
 
-		static void			convert(std::string const input);
+		static void			convert(std::string const &input);
 
 		class InvalidInputException : public std::exception
 		{
