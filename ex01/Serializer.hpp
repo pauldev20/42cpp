@@ -6,15 +6,20 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:32:48 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/10 13:42:09 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:32:12 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-# include <iostream>
+# include <stdint.h>	// uintptr_t
+
 # include "Data.hpp"
+
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
 
 class Serializer
 {

@@ -6,15 +6,16 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/25 14:08:22 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/25 15:45:40 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <iomanip>
-#include <cstdlib>
-#include <sstream>
-#include <limits>
+#include <iostream>	// std::cout, std::endl
+#include <iomanip>	// std::setprecision
+#include <cstdlib>	// std::strtof, std::strtod
+#include <sstream>	// std::stringstream
+#include <limits>	// std::numeric_limits
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
@@ -121,10 +122,56 @@ void			ScalarConverter::printOutput(std::string input, std::string const &charVa
 	std::cout << "double: " << std::fixed << doubleVal << std::endl;
 }
 
+/**
+ * The function checks if the input string is valid for conversion to a scalar value.
+ * 
+ * @param input The input string that needs to be checked for validity in the ScalarConverter class.
+ */
+void			ScalarConverter::handleInputError(std::string const &input)
+{
+	// check if only allowed characters are present
+	if (input.find_first_not_of("0123456789.f-+") != std::string::npos)
+		throw ScalarConverter::InvalidInputException();
+
+	// check if the signs are correct
+	else if (input.find('-') != input.find_last_of('-') || input.find('+') != input.find_last_of('+'))
+		throw ScalarConverter::InvalidInputException();
+	else if (input.find('-') != std::string::npos && input.find('+') != std::string::npos)
+		throw ScalarConverter::InvalidInputException();
+	else if (input.find('-') != std::string::npos && input.find('-') != 0)
+		throw ScalarConverter::InvalidInputException();
+	else if (input.find('+') != std::string::npos && input.find('+') != 0)
+		throw ScalarConverter::InvalidInputException();
+
+	// check if there are multiple dots or f's
+	else if (input.find('f') != std::string::npos && input.find('f') != input.find_last_of('f'))
+		throw ScalarConverter::InvalidInputException();
+	else if (input.find('.') != std::string::npos && input.find('.') != input.find_last_of('.'))
+		throw ScalarConverter::InvalidInputException();
+	
+	// check if there are dots or f's in the wrong places
+	else if (input.find('.') != std::string::npos && input.find('.') != 0 && !std::isdigit(input[input.find('.') - 1]))
+		throw ScalarConverter::InvalidInputException();
+	else if (input.find('f') != std::string::npos && input.find('f') != 0 && !std::isdigit(input[input.find('f') - 1]))
+		throw ScalarConverter::InvalidInputException();
+	
+	// check that there is a dot if a f is present
+	else if (input.find('f') != std::string::npos && input.find('.') == std::string::npos)
+		throw ScalarConverter::InvalidInputException();
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               Public Methods                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The function converts a given input string into a character, integer, float, and double value and
+ * prints the output.
+ * 
+ * @param input The input string that needs to be converted to different scalar types.
+ * 
+ * @return The function does not have a return type specified, so it is likely returning `void`.
+ */
 void				ScalarConverter::convert(std::string const &input)
 {
 	std::string charVal = "";
@@ -135,6 +182,8 @@ void				ScalarConverter::convert(std::string const &input)
 	if (ScalarConverter::handlePseudo(input))
 		return;
 
+	ScalarConverter::handleInputError(input);
+
 	if (input.size() == 1 && !std::isdigit(input[0]) && std::isprint(input[0])) {
 		charVal = input[0];
 		intVal = static_cast<int>(input[0]);
@@ -144,38 +193,36 @@ void				ScalarConverter::convert(std::string const &input)
 		std::ostringstream tmp;
 		intVal = std::atoi(input.c_str());
     	tmp << intVal;
-		if (tmp.str() != input) {
-			std::cout << "Overflow!" << std::endl;
-			return;
-		}
+		if (tmp.str() != input)
+			throw ScalarConverter::OverflowException();
 		floatVal = static_cast<float>(intVal);
 		doubleVal = static_cast<double>(intVal);
 		charVal = static_cast<char>(intVal);
-	} else if (input.find_first_not_of("0123456789.f-+") == std::string::npos
-		&& input.find('.') == input.find_last_of('.') && input.find('.') != 0 && input.find('.') != std::string::npos
-		&& input.find('-') == input.find_last_of('-') && input.find('+') == input.find_last_of('+')
-		&& ((input.find('-') != std::string::npos && input.find('+') == std::string::npos)
-			|| (input.find('+') != std::string::npos && input.find('-') == std::string::npos)
-			|| (input.find('-') == std::string::npos && input.find('+') == std::string::npos))) {
-		if (std::isdigit(input[input.size() - 2]) && input[input.size() - 1] == 'f') {
-			floatVal = std::strtof(input.c_str(), NULL);
-			intVal = static_cast<int>(floatVal);
-			doubleVal = static_cast<double>(floatVal);
-			charVal = static_cast<char>(floatVal);
-		}
-		else if (std::isdigit(input[input.size() - 1])) {
-			doubleVal = std::strtod(input.c_str(), NULL);
-			intVal = static_cast<int>(doubleVal);
-			floatVal = static_cast<float>(doubleVal);
-			charVal = static_cast<char>(doubleVal);
-		} else {
-			std::cout << "Invalid Input" << std::endl;
-			return;
-		}
+	} else if (input.find('f') != std::string::npos) {
+		floatVal = std::strtof(input.c_str(), NULL);
+		intVal = static_cast<int>(floatVal);
+		doubleVal = static_cast<double>(floatVal);
+		charVal = static_cast<char>(floatVal);
 	} else {
-		std::cout << "Invalid Input" << std::endl;
-		return;
+		doubleVal = std::strtod(input.c_str(), NULL);
+		intVal = static_cast<int>(doubleVal);
+		floatVal = static_cast<float>(doubleVal);
+		charVal = static_cast<char>(doubleVal);
 	}
 
 	ScalarConverter::printOutput(input, charVal, intVal, floatVal, doubleVal);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Exceptions                                 */
+/* -------------------------------------------------------------------------- */
+
+const char *ScalarConverter::InvalidInputException::what() const throw()
+{
+	return ("Invalid Input");
+}
+
+const char *ScalarConverter::OverflowException::what() const throw()
+{
+	return ("Overflow");
 }

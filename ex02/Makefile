@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/04/10 13:58:13 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/25 14:10:09 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:= identifier
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp Base.cpp A.cpp B.cpp C.cpp Identifier.cpp
 
