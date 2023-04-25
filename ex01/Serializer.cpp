@@ -6,13 +6,13 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:39:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/25 14:13:22 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/25 20:43:27 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-Serializer::Serializer()
+Serializer::Serializer(void)
 {
 }
 
@@ -27,7 +27,7 @@ Serializer		&Serializer::operator=(Serializer const &rhs)
 	return (*this);
 }
 
-Serializer::~Serializer()
+Serializer::~Serializer(void)
 {
 }
 
