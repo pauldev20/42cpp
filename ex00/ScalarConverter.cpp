@@ -193,7 +193,7 @@ void				ScalarConverter::convert(std::string const &input)
 		std::ostringstream tmp;
 		intVal = std::atoi(input.c_str());
     	tmp << intVal;
-		if (tmp.str() != input)
+		if (tmp.str() != (input.c_str() + (input.find('+') != std::string::npos ? 1 : 0)))
 			throw ScalarConverter::OverflowException();
 		floatVal = static_cast<float>(intVal);
 		doubleVal = static_cast<double>(intVal);
