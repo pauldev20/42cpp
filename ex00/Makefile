@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/04/25 00:49:22 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/25 14:09:19 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME		:= convert
 CC			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CPPFLAGS	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRCFILES	:= main.cpp ScalarConverter.cpp
 
