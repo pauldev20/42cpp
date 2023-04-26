@@ -1,4 +1,5 @@
 .vscode
+.DS_Store
 ex00/objs
 ex00/convert
 ex00/tester.sh
