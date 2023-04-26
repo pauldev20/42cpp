@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:14:48 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/10 18:28:02 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 20:38:37 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int	main(void)
 	numbers.push_back(70);
 	numbers.push_back(100);
 
-	std::cout << (::easyfind(numbers, 33).base()) << std::endl;
+	try {
+		std::cout << *(::easyfind(numbers, 33)) << std::endl;
+	} catch (std::exception &exec) {
+		std::cout << exec.what() << std::endl;
+	}
+	std::cout << *(::easyfind(numbers, 70)) << std::endl;
 
 	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:07:17 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/10 18:30:23 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 22:03:55 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-# include <iostream>
+# include <algorithm>	// std::find
 
 class NoOccurenceFoundException : public std::exception
 {
@@ -25,12 +25,10 @@ class NoOccurenceFoundException : public std::exception
 };
 
 template <typename T>
-typename T::iterator	easyfind(T &a, int b)
+typename T::iterator	easyfind(T &hay, int needle)
 {
-	typename T::iterator it;
-
-	it = std::find(a.begin(), a.end(), b);
-	if (it == a.end())
+	typename T::iterator it = std::find(hay.begin(), hay.end(), needle);
+	if (it == hay.end())
 		throw NoOccurenceFoundException();
 	return (it);
 }

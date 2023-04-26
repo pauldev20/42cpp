@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:26:23 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 03:20:49 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 20:58:56 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define SPAN_HPP
 
 # include <vector>	// std::vector
+
+# define ABS(a) (((a) < 0) ? (-(a)) : ((a)))
+
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
 
 class Span {
 	private:
@@ -32,7 +38,7 @@ class Span {
 		int		shortestSpan(void) const;
 		int		longestSpan(void) const;
 
-		template <class Iterator>
+		template <typename Iterator>
 		void	addNumber(Iterator begin, Iterator end) {
 			if (end - begin > _size)
 				throw TooManyElementsException();
@@ -40,6 +46,12 @@ class Span {
 		}
 
 		class TooManyElementsException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class NoSpanCanBeFoundException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

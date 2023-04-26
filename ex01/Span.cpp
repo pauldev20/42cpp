@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:38:06 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 03:23:02 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 20:59:30 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ void 	Span::addNumber(int nb)
  */
 int		Span::longestSpan(void) const
 {
+	if (this->_size < 2)
+		throw Span::NoSpanCanBeFoundException();
 	int biggest_span = std::numeric_limits<int>::min();
 	for (unsigned long i = 0; i < this->_vec.size(); i++) {
 		for (unsigned long j = i + 1; j < this->_vec.size(); j++) {
-			int span = std::abs(this->_vec[i] - this->_vec[j]);
+			int span = ABS(this->_vec[i] - this->_vec[j]);
 			if (span > biggest_span)
                 biggest_span = span;
 		}
@@ -85,10 +87,12 @@ int		Span::longestSpan(void) const
  */
 int		Span::shortestSpan(void) const
 {
+	if (this->_size < 2)
+		throw Span::NoSpanCanBeFoundException();
 	int shortest_span = std::numeric_limits<int>::max();
 	for (unsigned long i = 0; i < this->_vec.size(); i++) {
 		for (unsigned long j = i + 1; j < this->_vec.size(); j++) {
-			int span = std::abs(this->_vec[i] - this->_vec[j]);
+			int span = ABS(this->_vec[i] - this->_vec[j]);
 			if (span < shortest_span)
                 shortest_span = span;
 		}
@@ -104,3 +108,9 @@ const char *Span::TooManyElementsException::what() const throw()
 {
 	return ("Array Is Full");
 }
+
+const char *Span::NoSpanCanBeFoundException::what() const throw()
+{
+	return ("No Span Can Be Found (No Elements or Not Enough Elements)");
+}
+
