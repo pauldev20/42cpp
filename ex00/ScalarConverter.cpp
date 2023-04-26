@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 12:33:58 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:21:16 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void				ScalarConverter::convert(std::string const &input)
 		doubleVal = static_cast<double>(input[0]);
 	} else if (input.find_first_not_of("0123456789-+") == std::string::npos) {
 		std::ostringstream tmp;
-		intVal = std::atoi(input.c_str());
+		std::istringstream(input) >> intVal;
     	tmp << intVal;
 		if (tmp.str() != (input.c_str() + (input.find('+') != std::string::npos ? 1 : 0)))
 			throw ScalarConverter::OverflowException();

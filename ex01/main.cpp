@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:38:48 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/25 14:32:16 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:22:40 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int main(void)
 
 	Data		*deserialized = Serializer::deserialize(serialized);
 	std::cout << "Deserialized: " << deserialized->str1 << " " << deserialized->str2 << std::endl;
+
+	if (data == deserialized)
+		std::cout << "The pointers are equal" << std::endl;
+	else
+		std::cout << "The pointers are not equal" << std::endl;
 	delete data;
 
 	return (0);
