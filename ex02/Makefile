@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/04/26 02:53:06 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/04/26 02:48:59 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 #                                     BASE                                     #
 # ---------------------------------------------------------------------------- #
 
-NAME		:= span
+NAME		:= mutantstack
 CC			:= c++
 CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRCFILES	:= main.cpp Span.cpp
+SRCFILES	:= main.cpp
 
 # ---------------------------------------------------------------------------- #
 #                                     DIRS                                     #
