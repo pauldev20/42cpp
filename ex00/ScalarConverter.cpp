@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 13:21:16 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:25:52 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,6 @@
 #include <cstdlib>	// std::strtof, std::strtod
 #include <sstream>	// std::stringstream
 #include <limits>	// std::numeric_limits
-
-/* -------------------------------------------------------------------------- */
-/*                                Class Methods                               */
-/* -------------------------------------------------------------------------- */
-
-ScalarConverter::ScalarConverter()
-{
-}
-
-ScalarConverter::ScalarConverter(ScalarConverter const &src)
-{
-	*this = src;
-}
-
-ScalarConverter::~ScalarConverter()
-{
-}
-
-ScalarConverter		&ScalarConverter::operator=(ScalarConverter const &rhs)
-{
-	(void)rhs;
-	return (*this);
-}
 
 /* -------------------------------------------------------------------------- */
 /*                               Private Methods                              */

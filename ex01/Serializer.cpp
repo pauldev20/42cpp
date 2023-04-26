@@ -6,30 +6,11 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:39:27 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/25 20:43:27 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:25:09 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-
-Serializer::Serializer(void)
-{
-}
-
-Serializer::Serializer(Serializer const &src)
-{
-	*this = src;
-}
-
-Serializer		&Serializer::operator=(Serializer const &rhs)
-{
-	(void)rhs;
-	return (*this);
-}
-
-Serializer::~Serializer(void)
-{
-}
 
 /* -------------------------------------------------------------------------- */
 /*                               Public Methods                               */
