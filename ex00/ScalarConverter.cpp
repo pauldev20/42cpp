@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 13:32:27 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:38:58 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ void			ScalarConverter::printOutput(std::string input, std::string const &charVa
  */
 void			ScalarConverter::handleInputError(std::string const &input)
 {
+	// if its a char
+	if (input.size() == 1 && !std::isdigit(input[0]) && std::isprint(input[0]))
+		return;
+
 	// check if only allowed characters are present
 	if (input.find_first_not_of("0123456789.f-+") != std::string::npos)
 		throw ScalarConverter::InvalidInputException();
