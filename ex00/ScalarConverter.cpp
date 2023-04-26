@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 20:37:29 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 13:25:52 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/26 13:32:27 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ bool			ScalarConverter::handlePseudo(std::string const &input)
 	float		floatVal = 0.0f;
 	double		doubleVal = 0.0;
 	std::string	floatPseudoLiterals[] = {
-		"+inff", "-inff", "inff", "nanf"
+		"+inff", "-inff", "nanf"
 	};
 	std::string	doublePseudoLiterals[] = {
-		"-inf", "+inf", "inf", "nan"
+		"-inf", "+inf", "nan"
 	};
 
 	for (int i = 0; i < 4; i++) {
