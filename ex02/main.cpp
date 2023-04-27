@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 02:44:02 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/04/26 22:11:41 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/04/27 12:31:52 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,15 @@ int	main(void)
 		test.push(3);
 		test.push(4);
 		MutantStack<int> tmp(test);
+		MutantStack<int> tmp2 = test;
 
 		MutantStack<int>::iterator sit = tmp.begin();
 		MutantStack<int>::iterator eit = tmp.end();
+		while (sit != eit)
+			std::cout << *sit++ << std::endl;
+
+		sit = tmp2.begin();
+		eit = tmp2.end();
 		while (sit != eit)
 			std::cout << *sit++ << std::endl;
 	}
