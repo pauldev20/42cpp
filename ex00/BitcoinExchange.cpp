@@ -6,16 +6,18 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/02 19:29:19 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/03 01:49:24 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <iostream>
-#include <fstream>
+#include <iostream>	// std::cout, std::endl
+#include <fstream>	// std::ifstream
 #include <ctime>	// std::mktime
 #include <sstream>	// std::istringstream
 #include <cstdlib>	// std::strtof
+#include <algorithm>// std::count
+#include <iomanip>	// std::setfill, std::setw
 
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */
@@ -32,18 +34,22 @@ time_t	parseDate(std::string const &date)
 	else if (std::count(date.begin(), date.end(), '-') != 2)
 		throw BitcoinExchange::InvalidDateException();
 	if (is >> year >> delimiter >> month >> delimiter >> day) {
-		std::tm timeinfo;
+		std::tm tm;
 
-		time_t rawtime = std::time(NULL);
-		timeinfo = *localtime(&rawtime);
-		timeinfo.tm_mday = day;
-		timeinfo.tm_mon = month - 1;
-		timeinfo.tm_year = year - 1900;
-		time_t	timestamp = std::mktime(&timeinfo);
+		tm.tm_year = year - 1900;
+		tm.tm_mon = month - 1;
+		tm.tm_mday = day;
+		tm.tm_hour = 0;
+    	tm.tm_min = 0;
+		tm.tm_sec = 0;
+		tm.tm_isdst = 0;
+		tm.tm_gmtoff = 0;
+		tm.tm_zone = NULL;
+		time_t	timestamp = std::mktime(&tm);
 
-		if (timeinfo.tm_year == year - 1900 && timeinfo.tm_mon == month - 1 && timeinfo.tm_mday == day)
-			return (timestamp * 1000);
-		else
+		if (tm.tm_year == year - 1900 && tm.tm_mon == month - 1 && tm.tm_mday == day) {
+			return (timestamp);
+		} else
 			throw BitcoinExchange::InvalidDateException();
 	}
 	throw BitcoinExchange::InvalidDateException();
@@ -54,15 +60,17 @@ float	parseInputValue(std::string const &input)
 	float value = 0;
 	std::ostringstream tmp;
 
-	if (input.find_first_not_of("0123456789.") != std::string::npos)
+	if (input.find_first_not_of("-0123456789.") != std::string::npos)
 		throw BitcoinExchange::InvalidValueException();
 	else if (input.find('.') && input.find('.') != input.find_last_of('.'))
 		throw BitcoinExchange::InvalidValueException();
 	if (input.find('.') != std::string::npos)
 		return(std::strtof(input.c_str(), NULL));
 	std::istringstream(input) >> value;
-	if (value < 1 || value > 999)
-		throw BitcoinExchange::InvalidValueException();
+	if (value < 0)
+		throw BitcoinExchange::InvalidValueNotPositiveException();
+	else if (value > 1000)
+		throw BitcoinExchange::InvalidValueTooLargeException();
 	return (value);
 }
 
@@ -129,7 +137,32 @@ void	BitcoinExchange::parseInputFile(std::string const &path) {
 		if (lineCount == 0 && (date != "date" || value != "value"))
 			throw BitcoinExchange::InvalidInputFileException();
 		else if (lineCount != 0) {
-			std::cout << parseDate(date) * 1000 << " " << parseInputValue(value) << std::endl;
+			try {
+				time_t	inputTime = parseDate(date);
+				if (inputTime < 1231718400) {
+					std::cout << "Error: date is too early." << std::endl;
+					continue;
+				}
+				std::map<time_t, float>::iterator	index = this->data.upper_bound(inputTime);
+				if (index == this->data.begin())
+					index = this->data.end();
+				else
+					index--;
+				std::tm	*timeinfo = std::localtime(&inputTime);
+				float	parsedValue = parseInputValue(value);
+				std::cout << std::setfill('0');
+				std::cout << timeinfo->tm_year + 1900 << "-" << std::setw(2) << timeinfo->tm_mon + 1 << "-" << std::setw(2) << timeinfo->tm_mday << " => ";
+				std::cout << parsedValue << " = ";
+				std::cout << parsedValue * (*index).second << std::endl;
+			} catch (const BitcoinExchange::InvalidValueNotPositiveException &e) {
+				std::cout << "Error: not a positive number." << std::endl;
+			} catch (const BitcoinExchange::InvalidValueTooLargeException &e) {
+				std::cout << "Error: too large a number." << std::endl;
+			} catch (const BitcoinExchange::InvalidDateException &e) {
+				std::cout << "Error: bad input => " << date << std::endl;
+			} catch (const std::exception &e) {
+				std::cout << "Error: " << e.what() << std::endl;
+			}
 		}
 		lineCount++;
 	}
@@ -154,4 +187,12 @@ char const	*BitcoinExchange::InvalidDateException::what() const throw() {
 
 char const	*BitcoinExchange::InvalidValueException::what() const throw() {
 	return ("Invalid value");
+}
+
+char const	*BitcoinExchange::InvalidValueNotPositiveException::what() const throw() {
+	return ("Invalid value: value must be positive");
+}
+
+char const	*BitcoinExchange::InvalidValueTooLargeException::what() const throw() {
+	return ("Invalid value: value must be less than 1000");
 }

@@ -6,7 +6,7 @@
 #    By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 17:21:47 by pgeeser           #+#    #+#              #
-#    Updated: 2023/05/03 01:47:27 by pgeeser          ###   ########.fr        #
+#    Updated: 2023/05/03 01:52:38 by pgeeser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@
 #                                     BASE                                     #
 # ---------------------------------------------------------------------------- #
 
-NAME		:= btc
+NAME		:= RPN
 CC			:= c++
 CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRCFILES	:= main.cpp BitcoinExchange.cpp
+SRCFILES	:= main.cpp RPN.cpp
 
 # ---------------------------------------------------------------------------- #
 #                                     DIRS                                     #

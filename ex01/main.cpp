@@ -5,26 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 00:56:52 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 00:20:23 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/05/03 01:50:51 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/05/03 02:31:40 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 #include <iostream>	// std::cout, std::endl
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2) {
-		std::cout << "Usage: ./btc <input.txt>" << std::endl;
+	if (argc != 2 || std::string(argv[1]).empty()) {
+		std::cout << "Usage: ./RPN <mathematical expression>" << std::endl;
 		return (1);
 	}
 	try {
-		BitcoinExchange btc("./data.csv");
-		btc.parseInputFile(argv[1]);
+		RPN::calculate(argv[1]);
 	} catch (std::exception &exec) {
 		std::cout << "Error: " << exec.what() << std::endl;
 		return (1);
 	}
-	return (0);
+	return (0);	
 }

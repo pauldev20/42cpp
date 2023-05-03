@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 00:56:52 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 00:20:23 by pgeeser          ###   ########.fr       */
+/*   Created: 2023/05/03 01:53:26 by pgeeser           #+#    #+#             */
+/*   Updated: 2023/05/03 01:57:40 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-#include <iostream>	// std::cout, std::endl
+#ifndef RPN_HPP
+# define RPN_HPP
 
-int	main(int argc, char **argv)
+# include <string>
+# include <stack>
+
+class RPN
 {
-	if (argc != 2) {
-		std::cout << "Usage: ./btc <input.txt>" << std::endl;
-		return (1);
-	}
-	try {
-		BitcoinExchange btc("./data.csv");
-		btc.parseInputFile(argv[1]);
-	} catch (std::exception &exec) {
-		std::cout << "Error: " << exec.what() << std::endl;
-		return (1);
-	}
-	return (0);
-}
+	public:
+		~RPN(void);
+
+		static void calculate(std::string const &expression);
+
+	private:
+		static std::stack<int64_t> operations;
+
+		RPN(void);
+		RPN(RPN const &src);
+		RPN	&operator=(RPN const &rhs);
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 01:23:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/02 19:16:33 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/02 22:44:17 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ class BitcoinExchange
 		};
 
 		class InvalidValueException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class InvalidValueNotPositiveException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class InvalidValueTooLargeException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
