@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:50:51 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 02:31:40 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:25:46 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ int	main(int argc, char **argv)
 		std::cout << "Usage: ./RPN <mathematical expression>" << std::endl;
 		return (1);
 	}
+
 	try {
-		RPN::calculate(argv[1]);
+		std::cout << RPN::calculate(argv[1]) << std::endl;
 	} catch (std::exception &exec) {
 		std::cout << "Error: " << exec.what() << std::endl;
 		return (1);
 	}
+
 	return (0);	
 }

@@ -6,22 +6,50 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:53:26 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 01:57:40 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:26:16 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
 
-# include <string>
-# include <stack>
+# include <string>	// std::string
+# include <stack>	// std::stack
+
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
 
 class RPN
 {
 	public:
 		~RPN(void);
 
-		static void calculate(std::string const &expression);
+		static int64_t calculate(std::string const &expression);
+
+		class InvalidCharacterException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class TooShortInputException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class InvalidInputException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class DivisionByZeroException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 
 	private:
 		static std::stack<int64_t> operations;

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:16:03 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 15:19:21 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:09:23 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ class PmergeMe
 {
 	public:
 		~PmergeMe(void);
+
 		static void	sort(int argc, char **argv);
+
+		class InvalidInputException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 
 	private:
 		static std::vector<int64_t> _vec;

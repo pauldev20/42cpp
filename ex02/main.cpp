@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:09:06 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 13:25:06 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:13:26 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 int	main(int argc, char **argv)
 {
+	if (argc < 2) {
+		std::cout << "Usage: ./pmergeme <integers>" << std::endl;
+		return (1);
+	}
+
 	try {
 		PmergeMe::sort(argc, argv);
 	} catch (const std::exception &exce) {

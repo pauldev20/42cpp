@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:56:52 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 00:20:23 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:23:52 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 		std::cout << "Usage: ./btc <input.txt>" << std::endl;
 		return (1);
 	}
+
 	try {
 		BitcoinExchange btc("./data.csv");
 		btc.parseInputFile(argv[1]);
@@ -26,5 +27,6 @@ int	main(int argc, char **argv)
 		std::cout << "Error: " << exec.what() << std::endl;
 		return (1);
 	}
+
 	return (0);
 }

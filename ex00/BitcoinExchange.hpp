@@ -6,15 +6,19 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 01:23:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/02 22:44:17 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:56:15 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <string>
-# include <map>
+# include <string>	// std::string
+# include <map>		// std::map
+
+/* -------------------------------------------------------------------------- */
+/*                                   Classes                                  */
+/* -------------------------------------------------------------------------- */
 
 class BitcoinExchange
 {
@@ -26,13 +30,13 @@ class BitcoinExchange
 
 		void	parseInputFile(std::string const &path);
 
-		class InvalidInputFileException: public std::exception
+		class InvalidDatabaseException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
 
-		class InvalidDatabaseException: public std::exception
+		class InvalidValueException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
@@ -44,7 +48,7 @@ class BitcoinExchange
 				virtual const char *what() const throw();
 		};
 
-		class InvalidValueException: public std::exception
+		class InvalidInputFileException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
@@ -62,9 +66,17 @@ class BitcoinExchange
 				virtual const char *what() const throw();
 		};
 
+		class DateTooEarlyException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 	private:
 		std::map<time_t, float>	data;
 		BitcoinExchange(void);
+
+		void	executeQuery(std::string const &date, std::string const &value);
 };
 
 #endif
