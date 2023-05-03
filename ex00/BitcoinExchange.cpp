@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 01:49:24 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:37:19 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,13 @@ void	BitcoinExchange::parseInputFile(std::string const &path) {
 					std::cout << "Error: date is too early." << std::endl;
 					continue;
 				}
-				std::map<time_t, float>::iterator	index = this->data.upper_bound(inputTime);
-				if (index == this->data.begin())
-					index = this->data.end();
-				else
-					index--;
+				std::map<time_t, float>::iterator	index = this->data.lower_bound(inputTime);
+				if ((*index).first != inputTime) {	
+					if (index == this->data.begin())
+						index = this->data.end();
+					else
+						index--;
+				}
 				std::tm	*timeinfo = std::localtime(&inputTime);
 				float	parsedValue = parseInputValue(value);
 				std::cout << std::setfill('0');

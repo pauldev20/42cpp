@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:56:08 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/03 02:33:09 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/03 13:15:19 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 std::string	trimString(std::string const &input)
 {
 	if (input.empty()) return "";
-
-	std::string::size_type first = input.find_first_not_of(" \t");
-	std::string::size_type last = input.find_last_not_of(" \t");
+	std::string::size_type first = input.find_first_not_of(" \t\n\r");
+	std::string::size_type last = input.find_last_not_of(" \t\n\r");
 	if (first == std::string::npos || last == std::string::npos) return "";
 
 	return input.substr(first, last - first + 1);
