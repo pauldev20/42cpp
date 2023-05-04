@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:56:08 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:24:48 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:00:29 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*                           Statics Initializiation                          */
 /* -------------------------------------------------------------------------- */
 
-std::stack<int64_t> RPN::operations;
+std::stack<int64_t> RPN::_operations;
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
@@ -46,31 +46,31 @@ int64_t RPN::calculate(std::string const &expression)
 		if (*its == ' ')
 			continue;
 		if (std::isdigit(*its)) {
-			operations.push(*its - '0');
+			_operations.push(*its - '0');
 			continue;
 		}
-		if (operations.size() < 2)
+		if (_operations.size() < 2)
 			throw RPN::InvalidInputException();
-		int64_t a = operations.top();
-		operations.pop();
-		int64_t b = operations.top();
-		operations.pop();
+		int64_t a = _operations.top();
+		_operations.pop();
+		int64_t b = _operations.top();
+		_operations.pop();
 		if (*its == '*') {
-			operations.push(a * b);
+			_operations.push(a * b);
 		} else if (*its == '/') {
 			if (a == 0)
 				throw RPN::DivisionByZeroException();
-			operations.push(b / a);
+			_operations.push(b / a);
 		} else if (*its == '+') {
-			operations.push(a + b);
+			_operations.push(a + b);
 		} else if (*its == '-') {
-			operations.push(b - a);
+			_operations.push(b - a);
 		}
 	}
 
-	if (operations.size() != 1)
+	if (_operations.size() != 1)
 		throw RPN::InvalidInputException();
-	return (operations.top());
+	return (_operations.top());
 }
 
 /* -------------------------------------------------------------------------- */

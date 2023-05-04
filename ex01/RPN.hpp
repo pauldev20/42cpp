@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:53:26 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:26:16 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:00:05 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class RPN
 		};
 
 	private:
-		static std::stack<int64_t> operations;
+		static std::stack<int64_t> _operations;
 
 		RPN(void);
 		RPN(RPN const &src);

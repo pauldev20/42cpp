@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 01:23:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:56:15 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 01:59:57 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ class BitcoinExchange
 		};
 
 	private:
-		std::map<time_t, float>	data;
+		std::map<time_t, float>	_data;
+
 		BitcoinExchange(void);
 
 		void	executeQuery(std::string const &date, std::string const &value);

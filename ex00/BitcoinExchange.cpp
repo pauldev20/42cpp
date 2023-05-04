@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:56:56 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:00:52 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ float	parseInputValue(std::string const &input)
  * The function parses a string input and returns a float value, throwing an exception if the input is
  * invalid.
  * 
- * @param input The input parameter is a constant reference to a string that contains the data value to
+ * @param input The input parameter is a constant reference to a string that contains the _data value to
  * be parsed as a float.
  * 
  * @return a float value.
@@ -143,7 +143,7 @@ std::map<time_t, float>::iterator findExactOrLower(std::map<time_t, float> &map,
 /* -------------------------------------------------------------------------- */
 
 /**
- * The function reads data from a database file and stores it in a map.
+ * The function reads _data from a database file and stores it in a map.
  * 
  * @param database A string representing the file path of the database file to be opened and read.
  */
@@ -160,7 +160,7 @@ BitcoinExchange::BitcoinExchange(std::string const &database) {
 		if (lineCount == 0 && (date != "date" || value != "exchange_rate"))
 			throw BitcoinExchange::InvalidDatabaseException();
 		else if (lineCount != 0) {
-			this->data.insert(std::pair<time_t, float>(parseDate(date), parseDataValue(value)));
+			this->_data.insert(std::pair<time_t, float>(parseDate(date), parseDataValue(value)));
 		}
 		lineCount++;
 	}
@@ -177,7 +177,7 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) {
 
 BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	if (this != &rhs) {
-		this->data = rhs.data;
+		this->_data = rhs._data;
 	}
 	return (*this);
 }
@@ -238,7 +238,7 @@ void	BitcoinExchange::executeQuery(std::string const &date, std::string const &v
 	if (inputTime < 1231718400)
 		throw BitcoinExchange::DateTooEarlyException();
 
-	std::map<time_t, float>::iterator	index = findExactOrLower(this->data, inputTime);
+	std::map<time_t, float>::iterator	index = findExactOrLower(this->_data, inputTime);
 
 	std::tm	*timeinfo = std::localtime(&inputTime);
 	std::cout << std::setfill('0');
