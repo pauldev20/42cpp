@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:00:52 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:04:45 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ float	parseInputValue(std::string const &input)
 		return(std::strtof(input.c_str(), NULL));
 	std::istringstream(input) >> value;
 	tmp << value;
-	if (tmp.str() != input)
-		throw BitcoinExchange::InvalidValueException();
 	if (value < 0)
 		throw BitcoinExchange::InvalidValueNotPositiveException();
 	else if (value > 1000)
 		throw BitcoinExchange::InvalidValueTooLargeException();
+	if (tmp.str() != input)
+		throw BitcoinExchange::InvalidValueException();
 	return (value);
 }
 
