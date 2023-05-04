@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:53:26 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:06:32 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:33:49 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <string>		// std::string
 # include <stack>		// std::stack
-# include <stdint.h>	// int64_t
+# include <stdint.h>	// int_fast64_t
 
 /* -------------------------------------------------------------------------- */
 /*                                   Classes                                  */
@@ -26,7 +26,7 @@ class RPN
 	public:
 		~RPN(void);
 
-		static int64_t calculate(std::string const &expression);
+		static int calculate(std::string const &expression);
 
 		class InvalidCharacterException: public std::exception
 		{
@@ -53,7 +53,7 @@ class RPN
 		};
 
 	private:
-		static std::stack<int64_t> _operations;
+		static std::stack<int_fast64_t> _operations;
 
 		RPN(void);
 		RPN(RPN const &src);

@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:18:45 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:15:41 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:31:06 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ in a sorted order. */
 template <typename T>
 void	binaryInsertion(std::vector<T> &vec, T val)
 {
-	int64_t	low = 0;
-	int64_t high = vec.size() - 1;
+	int	low = 0;
+	int high = vec.size() - 1;
 	while (low <= high) {
-		int64_t mid = (low + high) / 2;
+		int mid = (low + high) / 2;
 		if (val < vec[mid])
 			high = mid - 1;
 		else
@@ -93,7 +93,7 @@ integer `size`, a function pointer `func` that takes no arguments and returns a 
 and a boolean `print` that defaults to `true`. The function is used to execute a function `func` and
 print the results and the time it took to execute the function. */
 template <typename T>
-void	execAndPrint(std::string const &type, int64_t size, T (*func)(void), bool print = true)
+void	execAndPrint(std::string const &type, int size, T (*func)(void), bool print = true)
 {
 	time_t start = getTime();
 	T ret = func();
@@ -109,7 +109,7 @@ void	execAndPrint(std::string const &type, int64_t size, T (*func)(void), bool p
 /*                           Statics Initializiation                          */
 /* -------------------------------------------------------------------------- */
 
-std::vector<int64_t> PmergeMe::_vec;
+std::vector<int> PmergeMe::_vec;
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
@@ -136,7 +136,7 @@ void PmergeMe::sort(int argc, char **argv)
 			throw PmergeMe::InvalidInputException();
 
 	for (int i = 1; i < argc; i++) {
-		int64_t intVal;
+		int intVal;
 		std::ostringstream tmp;
 		std::istringstream(argv[i]) >> intVal;
 		tmp << intVal;
@@ -144,7 +144,7 @@ void PmergeMe::sort(int argc, char **argv)
 			throw PmergeMe::InvalidInputException();
 
 		bool	found = false;
-		for (std::vector<int64_t>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
+		for (std::vector<int>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
 			if (*its == intVal)
 				found = true;
 		}
@@ -162,16 +162,16 @@ void PmergeMe::sort(int argc, char **argv)
  * The function sorts a vector of integers using a set and the merge insertion sortalgorithm
  * and returns a set of unique sorted integers.
  * 
- * @return The function `sortSet` returns a `std::set` of `int64_t` values, which contains the sorted
+ * @return The function `sortSet` returns a `std::set` of `int` values, which contains the sorted
  * and unique elements of the `_vec` vector.
  */
-std::set<int64_t>	PmergeMe::sortSet(void)
+std::set<int>	PmergeMe::sortSet(void)
 {
-	int64_t										tmp;
-	std::set<std::pair<int64_t, int64_t> >		pairsSet;
-	std::set<int64_t>							returnSet;
+	int								tmp;
+	std::set<std::pair<int, int> >	pairsSet;
+	std::set<int>					returnSet;
 
-	for (std::vector<int64_t>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
+	for (std::vector<int>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
 		tmp = *its++;
 		if (its == _vec.end()) {
 			returnSet.insert(tmp);
@@ -183,10 +183,10 @@ std::set<int64_t>	PmergeMe::sortSet(void)
 			pairsSet.insert(std::make_pair(*its, tmp));
 	}
 
-	for (std::set<std::pair<int64_t, int64_t> >::iterator its = pairsSet.begin(); its != pairsSet.end(); ++its) {
+	for (std::set<std::pair<int, int> >::iterator its = pairsSet.begin(); its != pairsSet.end(); ++its) {
 		returnSet.insert(its->first);
 	}
-	for (std::set<std::pair<int64_t, int64_t> >::iterator its = pairsSet.begin(); its != pairsSet.end(); ++its) {
+	for (std::set<std::pair<int, int> >::iterator its = pairsSet.begin(); its != pairsSet.end(); ++its) {
 		returnSet.insert(its->second);
 	}
 
@@ -199,16 +199,16 @@ std::set<int64_t>	PmergeMe::sortSet(void)
  * 
  * @return A sorted vector of integers.
  */
-std::vector<int64_t>	PmergeMe::sortVector(void)
+std::vector<int>	PmergeMe::sortVector(void)
 {
-	int64_t										tmp;
-	std::vector<std::pair<int64_t, int64_t> >	pairsVector;
-	std::vector<int64_t>						returnVector;
-	int64_t										*lastElement = NULL;
+	int									tmp;
+	std::vector<std::pair<int, int> >	pairsVector;
+	std::vector<int>					returnVector;
+	int									*lastElement = NULL;
 
 	if (_vec.size() % 2 != 0)
 		lastElement = &_vec.back();
-	for (std::vector<int64_t>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
+	for (std::vector<int>::iterator its = _vec.begin(); its != _vec.end(); ++its) {
 		tmp = *its++;
 		if (its == _vec.end())
 			break;
@@ -218,10 +218,10 @@ std::vector<int64_t>	PmergeMe::sortVector(void)
 			binaryInsertion(pairsVector, std::make_pair(*its, tmp));
 	}
 
-	for (std::vector<std::pair<int64_t, int64_t> >::iterator its = pairsVector.begin(); its != pairsVector.end(); ++its) {
+	for (std::vector<std::pair<int, int> >::iterator its = pairsVector.begin(); its != pairsVector.end(); ++its) {
 		returnVector.push_back(its->first);
 	}
-	for (std::vector<std::pair<int64_t, int64_t> >::iterator its = pairsVector.begin(); its != pairsVector.end(); ++its) {
+	for (std::vector<std::pair<int, int> >::iterator its = pairsVector.begin(); its != pairsVector.end(); ++its) {
 		binaryInsertion(returnVector, its->second);
 	}
 	if (lastElement != NULL)

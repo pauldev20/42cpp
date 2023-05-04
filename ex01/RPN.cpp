@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:56:08 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:00:29 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:33:39 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*                           Statics Initializiation                          */
 /* -------------------------------------------------------------------------- */
 
-std::stack<int64_t> RPN::_operations;
+std::stack<int_fast64_t> RPN::_operations;
 
 /* -------------------------------------------------------------------------- */
 /*                                Class Methods                               */
@@ -35,7 +35,7 @@ RPN::~RPN(void) {}
  * @param expression The input expression in Reverse Polish Notation (RPN) format that needs to be
  * evaluated.
  */
-int64_t RPN::calculate(std::string const &expression)
+int RPN::calculate(std::string const &expression)
 {
 	if (expression.size() < 3)
 		throw RPN::TooShortInputException();
@@ -51,9 +51,9 @@ int64_t RPN::calculate(std::string const &expression)
 		}
 		if (_operations.size() < 2)
 			throw RPN::InvalidInputException();
-		int64_t a = _operations.top();
+		int_fast64_t a = _operations.top();
 		_operations.pop();
-		int64_t b = _operations.top();
+		int_fast64_t b = _operations.top();
 		_operations.pop();
 		if (*its == '*') {
 			_operations.push(a * b);
