@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 13:04:39 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:54:07 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void	BitcoinExchange::parseInputFile(std::string const &path) {
 			try {
 				this->executeQuery(date, value);
 			} catch (const BitcoinExchange::NoDateFoundException &e) {
-				std::cout << "Error: no matching date found." << std::endl;
+				std::cout << "Error: no matching date found in database." << std::endl;
 			} catch (const BitcoinExchange::DateTooEarlyException &e) {
 				std::cout << "Error: date is too early." << std::endl;
 			} catch (const BitcoinExchange::InvalidValueNotPositiveException &e) {
