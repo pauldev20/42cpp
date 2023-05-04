@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 13:54:07 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 14:02:33 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,8 @@ BitcoinExchange::BitcoinExchange(std::string const &database) {
 
 	int	lineCount = 0;
 	for (std::string line; std::getline(inFile, line);) {
+		if (line.empty())
+			throw BitcoinExchange::InvalidDatabaseException();
 		std::string date = line.substr(0, line.find_first_of(','));
 		std::string value = line.substr(line.find_first_of(',') + 1);
 
@@ -198,6 +200,10 @@ void	BitcoinExchange::parseInputFile(std::string const &path) {
 
 	int	lineCount = 0;
 	for (std::string line; std::getline(inFile, line);) {
+		if (line.empty()) {
+			std::cout << "Error: bad input => " << line << std::endl;
+			continue;
+		}
 		std::string date = line.substr(0, line.find(" | "));
 		std::string value = line.substr(line.find(" | ") + 3);
 
