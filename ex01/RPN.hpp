@@ -6,15 +6,16 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:53:26 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:00:05 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:06:32 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
 
-# include <string>	// std::string
-# include <stack>	// std::stack
+# include <string>		// std::string
+# include <stack>		// std::stack
+# include <stdint.h>	// int64_t
 
 /* -------------------------------------------------------------------------- */
 /*                                   Classes                                  */

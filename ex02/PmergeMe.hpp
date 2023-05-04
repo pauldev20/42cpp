@@ -6,13 +6,14 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:16:03 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:09:23 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:07:40 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
  
+# include <stdint.h>	// int64_t
 # include <iostream>	// std::cout, std::endl, std::string
 # include <vector>		// std::vector
 # include <set>			// std::set

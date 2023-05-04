@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:18:45 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:12:03 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 02:13:02 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ whether `const_iterator` is a type or a member variable without the `typename` k
 template <typename T>
 void	printContainer(std::string const &text, T const &container)
 {
-	std::cout << text << ": ";
+	std::cout << text << "\t";
 	for (typename T::const_iterator it = container.begin(); it != container.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
@@ -83,7 +83,7 @@ time_t	getTime(void)
 void	printTime(std::string const &msg, time_t start, time_t end)
 {
 	time_t diff = end - start;
-	std::cout << msg << " : ";
+	std::cout << msg << " \t: ";
 	std::cout << ((diff > 10000) ? diff / 1000 : diff);
 	std::cout << ((diff > 10000) ? " ms" : " µs") << std::endl;
 }
@@ -99,7 +99,7 @@ void	execAndPrint(std::string const &type, int64_t size, T (*func)(void), bool p
 	T ret = func();
 	time_t end = getTime();
 	if (print)
-		printContainer("After", ret);
+		printContainer("After: ", ret);
 	std::ostringstream s;
 	s << "Time to process a range of " << size << " elements with " << type;
 	printTime(s.str(), start, end);
@@ -152,7 +152,7 @@ void PmergeMe::sort(int argc, char **argv)
 			_vec.push_back(intVal);
 	}
 
-	printContainer("Before", _vec);
+	printContainer("Before:", _vec);
 
 	execAndPrint("std::set", _vec.size(), sortSet);
 	execAndPrint("std::vector", _vec.size(), sortVector, false);
