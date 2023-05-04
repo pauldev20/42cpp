@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 01:23:35 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 01:59:57 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:03:07 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ class BitcoinExchange
 		};
 
 		class DateTooEarlyException: public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class NoDateFoundException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

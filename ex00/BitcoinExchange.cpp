@@ -6,7 +6,7 @@
 /*   By: pgeeser <pgeeser@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:29:30 by pgeeser           #+#    #+#             */
-/*   Updated: 2023/05/04 02:04:45 by pgeeser          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:04:39 by pgeeser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ std::map<time_t, float>::iterator findExactOrLower(std::map<time_t, float> &map,
 	std::map<time_t, float>::iterator	index = map.lower_bound(timestamp);
 	if ((*index).first != timestamp) {	
 		if (index == map.begin())
-			index = map.end();
+			throw BitcoinExchange::NoDateFoundException();
 		else
 			index--;
 	}
@@ -206,6 +206,8 @@ void	BitcoinExchange::parseInputFile(std::string const &path) {
 		else if (lineCount != 0) {
 			try {
 				this->executeQuery(date, value);
+			} catch (const BitcoinExchange::NoDateFoundException &e) {
+				std::cout << "Error: no matching date found." << std::endl;
 			} catch (const BitcoinExchange::DateTooEarlyException &e) {
 				std::cout << "Error: date is too early." << std::endl;
 			} catch (const BitcoinExchange::InvalidValueNotPositiveException &e) {
@@ -278,4 +280,8 @@ char const	*BitcoinExchange::InvalidValueTooLargeException::what() const throw()
 
 char const	*BitcoinExchange::DateTooEarlyException::what() const throw() {
 	return ("Date to early");
+}
+
+char const	*BitcoinExchange::NoDateFoundException::what() const throw() {
+	return ("No matching date found");
 }
