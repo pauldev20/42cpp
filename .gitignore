@@ -1,0 +1,10 @@
+.vscode
+.DS_Store
+ex00/objs
+ex00/convert
+ex00/tester.sh
+ex01/objs
+ex01/serializer
+ex02/objs
+ex02/identifier
+README.md
